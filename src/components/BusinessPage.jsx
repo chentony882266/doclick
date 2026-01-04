@@ -25,7 +25,7 @@ const BusinessPage = ({ onBack }) => {
                     <div className="hidden md:flex space-x-8 text-sm">
                         <a href="#painpoints" className="hover:text-biz-300">為什麼選擇我們</a>
                         <a href="#solutions" className="hover:text-biz-300">核心服務</a>
-                        <a href="#pricing" className="hover:text-biz-300">訂閱方案</a>
+                        <a href="#pricing" className="hover:text-biz-300">開始訂製我的模組</a>
                     </div>
                     <button className="bg-white text-biz-900 px-4 py-2 rounded text-sm font-bold hover:bg-gray-100">
                         預約諮詢
