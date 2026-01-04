@@ -323,8 +323,8 @@ const BusinessPage = ({ onBack }) => {
             <section id="pricing" className="py-20 bg-biz-900 text-white">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold">透明的點數訂閱制</h2>
-                        <p className="text-biz-300 mt-4">加入會員，鎖定全年最低費率 (1點 = 1標準工時)</p>
+                        <h2 className="text-3xl font-bold">愜易居營運模組對企業的三大核心價值</h2>
+                        <p className="text-biz-300 mt-4 text-xl">省錢、省事、省風險</p>
                     </div>
                     <div className="flex flex-col md:flex-row justify-center gap-8 max-w-5xl mx-auto">
                         {/* Non-Member */}
