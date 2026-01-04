@@ -4,6 +4,7 @@ import PriceListModal from './PriceListModal';
 import ServiceSpecsModal from './ServiceSpecsModal';
 import ContactModal from './ContactModal';
 import ConsultationModal from './ConsultationModal';
+import CostComparisonModal from './CostComparisonModal';
 import { PRICING_PLANS } from '../constants/data';
 
 const BusinessPage = ({ onBack }) => {
@@ -12,6 +13,7 @@ const BusinessPage = ({ onBack }) => {
     const [isServiceSpecsModalOpen, setIsServiceSpecsModalOpen] = useState(false);
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
     const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+    const [isCostComparisonModalOpen, setIsCostComparisonModalOpen] = useState(false);
 
     return (
         <div className="bg-white min-h-screen font-sans relative">
@@ -20,6 +22,7 @@ const BusinessPage = ({ onBack }) => {
             <ServiceSpecsModal isOpen={isServiceSpecsModalOpen} onClose={() => setIsServiceSpecsModalOpen(false)} />
             <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
             <ConsultationModal isOpen={isConsultationModalOpen} onClose={() => setIsConsultationModalOpen(false)} />
+            <CostComparisonModal isOpen={isCostComparisonModalOpen} onClose={() => setIsCostComparisonModalOpen(false)} />
 
             {/* Biz Nav */}
             <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
@@ -329,18 +332,22 @@ const BusinessPage = ({ onBack }) => {
                     <div className="flex flex-col md:flex-row justify-center gap-8 max-w-5xl mx-auto">
                         {/* Non-Member */}
                         {/* How We Save You Money Link - Image Version */}
-                        <a
-                            href="https://gemini.google.com/share/97a3c340c62a"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-transparent flex-1 hover:opacity-95 transition-opacity cursor-pointer group rounded-xl overflow-hidden shadow-lg border-4 border-transparent hover:border-biz-500 scale-100 md:scale-[1.02] transform transition-transform"
+                        {/* How We Save You Money Card */}
+                        <button
+                            onClick={() => setIsCostComparisonModalOpen(true)}
+                            className="bg-biz-800 p-8 rounded-xl border border-biz-700 flex-1 opacity-75 hover:opacity-100 transition-all hover:scale-[1.02] cursor-pointer flex flex-col items-center justify-center group text-left w-full md:w-auto"
                         >
-                            <img
-                                src="/images/save_money_promo.png"
-                                alt="愜易居如何為您省錢 - 把固定人事成本變成可控營運資源"
-                                className="w-full h-full object-cover"
-                            />
-                        </a>
+                            <div className="w-16 h-16 bg-biz-700 rounded-full flex items-center justify-center mb-6 group-hover:bg-biz-600 transition-colors">
+                                <i className="fas fa-hand-holding-usd text-3xl text-biz-200 group-hover:text-white"></i>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 text-center group-hover:text-biz-200">愜易居如何幫企業戶省錢</h3>
+                            <p className="text-lg text-gray-400 text-center leading-relaxed group-hover:text-gray-200 font-medium">
+                                把固定人事成本，<br />變成可控的營運資源。
+                            </p>
+                            <div className="mt-8 text-biz-400 font-bold group-hover:text-white flex items-center bg-biz-900/50 px-6 py-2 rounded-full border border-biz-700 group-hover:border-biz-500 transition-colors">
+                                <i className="fas fa-chart-pie mr-2"></i> 查看成本效益分析
+                            </div>
+                        </button>
 
                         {PRICING_PLANS.map((plan, idx) => (
                             <div key={idx} className={`bg-white text-gray-900 p-8 rounded-xl flex-1 relative ${plan.isPopular ? 'transform md:-translate-y-4 shadow-2xl border-4 border-biz-500' : ''}`}>
