@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import InfoModal from './InfoModal';
+import PriceListModal from './PriceListModal';
 import { PRICING_PLANS } from '../constants/data';
 
 const BusinessPage = ({ onBack }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isPriceListModalOpen, setIsPriceListModalOpen] = useState(false);
 
     return (
         <div className="bg-white min-h-screen font-sans relative">
             <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <PriceListModal isOpen={isPriceListModalOpen} onClose={() => setIsPriceListModalOpen(false)} />
 
             {/* Biz Nav */}
             <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
@@ -53,7 +56,9 @@ const BusinessPage = ({ onBack }) => {
                             零風險・全彈性・訂閱制。讓您專注核心業務，繁瑣的勞務交給愜易居。
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <button className="bg-biz-500 hover:bg-biz-400 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-biz-500/30 transition-all transform hover:-translate-y-1">
+                            <button
+                                onClick={() => setIsPriceListModalOpen(true)}
+                                className="bg-biz-500 hover:bg-biz-400 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-biz-500/30 transition-all transform hover:-translate-y-1">
                                 索取 2026 報價單
                             </button>
                             <button
