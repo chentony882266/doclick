@@ -146,6 +146,66 @@ const SERVICE_SPECS = [
             { title: 'AI或軟體生成素材', desc: '熟練使用AI工具或 Adobe系列工具生成情境背景圖（如：將產品合成在北歐風客廳），降低攝影棚租借成本。' },
         ]
     },
+    {
+        id: 'kol_video',
+        title: 'KOL短影音行銷 (技術型人員)',
+        icon: 'fa-video',
+        color: 'text-rose-500',
+        bg: 'bg-rose-50',
+        border: 'border-rose-200',
+        items: [
+            { title: '選題策劃', desc: '蒐集當下 TikTok/Reels/Shorts 的熱門音樂與挑戰，提出適合品牌的拍攝主題。' },
+            { title: '分鏡腳本', desc: '撰寫簡易拍攝大綱，包含場景、運鏡方式、口播文案。' },
+            { title: '手機攝影', desc: '使用手機進行影片拍攝。包含運鏡、補光（使用簡易環形燈）。' },
+            { title: '引導演出', desc: '若由老闆或員工出鏡，派遣人員負責擔任「導演」，引導表情與動作；若需派遣人員出鏡（需另簽肖像授權），則擔任「演員」。' },
+            { title: '剪輯', desc: '使用 CapCut (剪映) 或其它軟件進行快速剪輯。包含：上字幕、卡點剪接、添加音效與貼圖。' },
+            { title: '平台發佈', desc: '協助上傳影片至各大平台如IG/FB/Threads，設定封面圖、撰寫標題，回覆初期留言。' },
+        ]
+    },
+    {
+        id: 'photo_tech',
+        title: '外派商業拍攝 (技術型人員)',
+        icon: 'fa-camera',
+        color: 'text-cyan-600',
+        bg: 'bg-cyan-50',
+        border: 'border-cyan-200',
+        items: [
+            { title: '標準白底商品照', desc: '在客戶搭建好的簡易攝影棚或燈箱中，進行標準化拍攝（去背用）。產出量大，強調清晰、色準，不含複雜佈景。' },
+            { title: '活動紀錄', desc: '拍攝公司內部活動、講座、會議側拍。交付「已過濾（刪除閉眼/模糊）」的 JPG 大檔，僅做全域基本調光（Lightroom 批次處理）。' },
+            { title: '簡易人像及商品', desc: '拍攝員工證件照、服飾新品的「平拍」或「簡單穿搭」（非形象大片）。' },
+            { title: '基礎修圖', desc: '裁切、調亮、白平衡校正、基礎磨皮。不包含精修、合成或特效。' },
+        ]
+    },
+    {
+        id: 'photo_pro',
+        title: '專案技術商業拍攝 (專業合作廠商)',
+        icon: 'fa-camera-retro',
+        color: 'text-amber-600',
+        bg: 'bg-amber-50',
+        border: 'border-amber-200',
+        items: [
+            { title: '主視覺設計', desc: '包含燈光設計、場景搭建、美術陳列。' },
+            { title: '高階精修', desc: '液化瘦身、光影重塑、材質合成、無中生有（如：把瓶子上的字換掉）。' },
+            { title: '創意策劃', desc: '攝影師參與前期的視覺發想，提供專業的燈光與構圖建議。' },
+            { title: '溝通', desc: '前期開會討論風格，中期拍攝，後期校稿。' },
+            { title: '專業設備', desc: '全套專業設備（高畫素相機、多盞棚燈、控光配件、背景架）。' },
+        ]
+    },
+    {
+        id: 'engineering',
+        title: '工程製圖 (技術型人員)',
+        icon: 'fa-drafting-compass',
+        color: 'text-blue-700',
+        bg: 'bg-blue-50',
+        border: 'border-blue-200',
+        items: [
+            { title: '2D圖面繪製', desc: '使用 AutoCAD 依據手稿或草圖，繪製平面圖、立面圖、剖面圖。' },
+            { title: '圖面修改', desc: '依據工程師標註的修正圖或會議記錄，進行尺寸修改、圖層調整與線型修正。' },
+            { title: '施工圖繪製', desc: '將設計師圖面拆解為可交由工班執行施工的詳細尺寸及大樣圖，標註公差與表面處理符號（需由工程師提供規範）。' },
+            { title: '基礎建模', desc: '使用 SketchUp (室內) 或 SolidWorks (機構) 建立基礎外觀模型，供客戶確認體積與檢查。' },
+            { title: '估算製作', desc: '協助從圖面中提取材料清單，統計材料及零件數量。' },
+        ]
+    },
 ];
 
 const ServiceSpecsModal = ({ isOpen, onClose }) => {
