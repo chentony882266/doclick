@@ -5,6 +5,7 @@ import ServiceSpecsModal from './ServiceSpecsModal';
 import ContactModal from './ContactModal';
 import ConsultationModal from './ConsultationModal';
 import CostComparisonModal from './CostComparisonModal';
+import SaveTroubleModal from './SaveTroubleModal';
 import { PRICING_PLANS } from '../constants/data';
 
 const BusinessPage = ({ onBack }) => {
@@ -14,6 +15,7 @@ const BusinessPage = ({ onBack }) => {
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
     const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
     const [isCostComparisonModalOpen, setIsCostComparisonModalOpen] = useState(false);
+    const [isSaveTroubleModalOpen, setIsSaveTroubleModalOpen] = useState(false);
 
     return (
         <div className="bg-white min-h-screen font-sans relative">
@@ -23,6 +25,7 @@ const BusinessPage = ({ onBack }) => {
             <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
             <ConsultationModal isOpen={isConsultationModalOpen} onClose={() => setIsConsultationModalOpen(false)} />
             <CostComparisonModal isOpen={isCostComparisonModalOpen} onClose={() => setIsCostComparisonModalOpen(false)} />
+            <SaveTroubleModal isOpen={isSaveTroubleModalOpen} onClose={() => setIsSaveTroubleModalOpen(false)} />
 
             {/* Biz Nav */}
             <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
@@ -349,7 +352,26 @@ const BusinessPage = ({ onBack }) => {
                             </div>
                         </button>
 
-                        {PRICING_PLANS.map((plan, idx) => (
+                        {/* How We Save You Trouble Card - Standard */}
+                        <button
+                            onClick={() => setIsSaveTroubleModalOpen(true)}
+                            className="bg-white p-8 rounded-xl border border-gray-100 flex-1 hover:shadow-2xl transition-all hover:scale-[1.02] cursor-pointer flex flex-col items-center justify-center group text-left w-full md:w-auto relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-green-100 to-transparent -mr-10 -mt-10 rounded-full opacity-50"></div>
+                            <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-100 transition-colors">
+                                <i className="fas fa-cogs text-3xl text-green-600"></i>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 text-center text-gray-800">愜易居營運模組如何幫您省事</h3>
+                            <p className="text-lg text-gray-500 text-center leading-relaxed font-medium">
+                                把傳統用人營運，<br />變成可控的模組化事務。
+                            </p>
+                            <div className="mt-8 text-green-600 font-bold flex items-center bg-green-50 px-6 py-2 rounded-full border border-green-200 group-hover:border-green-400 transition-colors">
+                                <i className="fas fa-tasks mr-2"></i> 查看營運效益分析
+                            </div>
+                        </button>
+
+                        {/* Premium Plan */}
+                        {PRICING_PLANS.slice(1).map((plan, idx) => (
                             <div key={idx} className={`bg-white text-gray-900 p-8 rounded-xl flex-1 relative ${plan.isPopular ? 'transform md:-translate-y-4 shadow-2xl border-4 border-biz-500' : ''}`}>
                                 {plan.isPopular && <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-biz-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Most Popular</div>}
                                 <h3 className="text-xl font-bold mb-2 text-biz-900">{plan.name}</h3>
