@@ -134,8 +134,8 @@ const BusinessPage = ({ onBack }) => {
                                     <i className="fas fa-arrow-right text-[#0891b2] text-xl mx-2 md:mx-4"></i>
                                 </div>
                                 <div className="flex items-center">
-                                    <div className="bg-[#5eead4] text-[#134e4a] font-bold py-3 px-2 rounded-lg shadow-md w-44 text-center flex flex-col items-center justify-center h-24 border-2 border-[#14b8a6]">
-                                        <i className="fas fa-check text-yellow-500 text-2xl mb-1 absolute -mt-10 mr-10 shadow-sm bg-white rounded-full p-1"></i>
+                                    <div className="relative bg-[#5eead4] text-[#134e4a] font-bold py-3 px-2 rounded-lg shadow-md w-44 text-center flex flex-col items-center justify-center h-24 border-2 border-[#14b8a6]">
+                                        <i className="fas fa-check text-yellow-500 text-2xl absolute -top-5 left-1/2 transform -translate-x-1/2 shadow-sm bg-white rounded-full p-1"></i>
                                         <div className="text-lg leading-tight mb-1 mt-2">[文化與能力驗證]</div>
                                         <i className="fas fa-check text-white text-sm"></i>
                                     </div>
