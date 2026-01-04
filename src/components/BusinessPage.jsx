@@ -328,23 +328,18 @@ const BusinessPage = ({ onBack }) => {
                     </div>
                     <div className="flex flex-col md:flex-row justify-center gap-8 max-w-5xl mx-auto">
                         {/* Non-Member */}
-                        {/* How We Save You Money Link */}
+                        {/* How We Save You Money Link - Image Version */}
                         <a
                             href="https://gemini.google.com/share/97a3c340c62a"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-biz-800 p-8 rounded-xl border border-biz-700 flex-1 opacity-75 hover:opacity-100 transition-all hover:scale-[1.02] cursor-pointer flex flex-col items-center justify-center group"
+                            className="bg-transparent flex-1 hover:opacity-95 transition-opacity cursor-pointer group rounded-xl overflow-hidden shadow-lg border-4 border-transparent hover:border-biz-500 scale-100 md:scale-[1.02] transform transition-transform"
                         >
-                            <div className="w-16 h-16 bg-biz-700 rounded-full flex items-center justify-center mb-6 group-hover:bg-biz-600 transition-colors">
-                                <i className="fas fa-lightbulb text-3xl text-biz-200 group-hover:text-white"></i>
-                            </div>
-                            <h3 className="text-2xl font-bold mb-4 text-center group-hover:text-biz-200">愜易居如何為您省錢</h3>
-                            <p className="text-lg text-gray-400 text-center leading-relaxed group-hover:text-gray-200">
-                                把固定人事成本，<br />變成可控的營運資源。
-                            </p>
-                            <div className="mt-8 text-biz-400 font-bold group-hover:text-white flex items-center">
-                                了解更多 <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </div>
+                            <img
+                                src="/images/save_money_promo.png"
+                                alt="愜易居如何為您省錢 - 把固定人事成本變成可控營運資源"
+                                className="w-full h-full object-cover"
+                            />
                         </a>
 
                         {PRICING_PLANS.map((plan, idx) => (
