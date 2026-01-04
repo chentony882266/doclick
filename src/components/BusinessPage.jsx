@@ -76,8 +76,8 @@ const BusinessPage = ({ onBack }) => {
             <section id="painpoints" className="py-20 bg-biz-50">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900">為什麼傳統聘僱不再適用？</h2>
-                        <p className="text-gray-600 mt-4">擺脫隱形成本，轉向「勞動力算力」思維</p>
+                        <h2 className="text-5xl font-bold text-gray-900 leading-tight">傳統招聘模式 vs. 愜易居隨插即用模組化</h2>
+                        <p className="text-gray-600 mt-6 text-xl">用真實的協作，取代履歷的片面之詞</p>
                     </div>
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
                         {/* Traditional */}
