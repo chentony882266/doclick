@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { TALENT_LEVELS } from '../constants/data';
 
 const TalentPage = ({ onBack }) => {
@@ -11,14 +12,15 @@ const TalentPage = ({ onBack }) => {
                         <div className="font-bold text-xl tracking-wider mr-2 text-talent-900">愜易居</div>
                         <div className="text-xs bg-talent-100 text-talent-800 px-2 py-1 rounded">Career</div>
                     </div>
-                    <div className="hidden md:flex space-x-8 text-sm text-gray-600">
+                    <div className="hidden md:flex space-x-8 text-sm text-gray-600 items-center">
+                        <Link to="/jobs" className="hover:text-talent-600 font-bold">找工作</Link>
                         <a href="#vision" className="hover:text-talent-600">願景</a>
                         <a href="#levels" className="hover:text-talent-600">分級制度</a>
                         <a href="#benefits" className="hover:text-talent-600">地圖卡福利</a>
                     </div>
-                    <button className="bg-talent-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-talent-700 shadow-md shadow-talent-500/30">
+                    <Link to="/register" className="bg-talent-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-talent-700 shadow-md shadow-talent-500/30">
                         立即加入
-                    </button>
+                    </Link>
                 </div>
             </nav>
 
@@ -36,9 +38,9 @@ const TalentPage = ({ onBack }) => {
                             全台首創「職涯地圖卡」制度。在這裡，我們不只發薪水，更投資你的未來。從行政到技術，從兼職到專業管家。
                         </p>
                         <div className="flex gap-4">
-                            <button className="bg-talent-600 hover:bg-talent-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-talent-600/20 transition-all transform hover:-translate-y-1">
+                            <Link to="/register" className="bg-talent-600 hover:bg-talent-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-talent-600/20 transition-all transform hover:-translate-y-1 inline-block text-center">
                                 啟動職涯地圖
-                            </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="md:w-1/2 relative">

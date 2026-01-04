@@ -1,37 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import LandingScreen from './components/LandingScreen';
 import BusinessPage from './components/BusinessPage';
 import TalentPage from './components/TalentPage';
 import './App.css';
 
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import JobSearch from './pages/job/JobSearch';
+
 const App = () => {
-  const [view, setView] = useState('home'); // home, business, talent
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // Handle browser back button
+  // Scroll to top on route change
   useEffect(() => {
-    const handlePopState = (event) => {
-      // Very basic routing handling
-      if (event.state && event.state.view) {
-        setView(event.state.view);
-      } else {
-        setView('home');
-      }
-    };
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
-
-  const navigateTo = (newView) => {
-    window.history.pushState({ view: newView }, '', `#${newView}`);
-    setView(newView);
     window.scrollTo(0, 0);
-  };
+  }, [location.pathname]);
 
   return (
     <div className="antialiased">
-      {view === 'home' && <LandingScreen onSelect={navigateTo} />}
-      {view === 'business' && <BusinessPage onBack={() => navigateTo('home')} />}
-      {view === 'talent' && <TalentPage onBack={() => navigateTo('home')} />}
+      <Routes>
+        <Route path="/" element={<LandingScreen onSelect={(role) => navigate(`/${role}`)} />
+        } />
+        <Route path="/business" element={<BusinessPage onBack={() => navigate('/')} />} />
+        <Route path="/talent" element={<TalentPage onBack={() => navigate('/')} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/jobs" element={<JobSearch />} />
+      </Routes>
     </div>
   );
 };
