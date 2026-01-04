@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>愜易居 Workforce OS | 勞動力算力中心</title>
+
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        biz: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0f172a', // Corporate Navy
+                        },
+                        talent: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .split-hover-left:hover {
+            width: 60%;
+        }
+
+        .split-hover-right:hover {
+            width: 60%;
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .clip-path-slant {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            background-color: rgba(15, 23, 42, 0.8);
+            /* biz-900 with opacity */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // --- Data Definitions ---
+
+        const PRICING_PLANS = [
+            {
+                name: "標準會員 (Standard)",
+                monthlyFee: "NT$ 4,800",
+                hourlyRate: "300 點/hr",
+                target: "穩定用量 > 70hr",
+                features: [
+                    "標準人力派遣 (1.0點)",
+                    "專屬帳戶經理",
+                    "產能數據報表",
+                    "48小時調度保證"
+                ],
+                isPopular: false
+            },
+            {
+                name: "PRO 企業會員",
+                monthlyFee: "NT$ 8,000",
+                hourlyRate: "290 點/hr",
+                target: "企業級客戶 / 需技術人才",
+                features: [
+                    "優先派遣權 (24小時)",
+                    "技術人才優惠費率 (1.1倍)",
+                    "設計雲 / 財務管家訂閱權",
+                    "跨區調度支援",
+                    "API 串接支援"
+                ],
+                isPopular: true
+            }
+        ];
+
+        const TALENT_LEVELS = [
+            {
+                level: "Tier 1 (A類)",
+                title: "備用池 / 救火隊",
+                req: "月工時 35~70 小時",
+                pay: "NT$ 200 / hr",
+                benefits: ["基礎勞健保", "彈性排班"]
+            },
+            {
+                level: "Tier 2 (B類)",
+                title: "核心戰力",
+                req: "月工時 > 70 小時",
+                pay: "NT$ 210~250 / hr",
+                benefits: ["職涯地圖解鎖", "進修獎學金 $3,000", "家庭數位基金", "購屋補貼資格"]
+            }
+        ];
+
+        // --- Components ---
+
+        // 1. Dual Landing Screen
+        const LandingScreen = ({ onSelect }) => {
+            return (
+                <div className="h-screen w-full flex flex-col md:flex-row overflow-hidden">
+                    {/* B Side */}
+                    <div
+                        className="relative w-full md:w-1/2 h-1/2 md:h-full bg-biz-900 text-white flex flex-col justify-center items-center p-10 cursor-pointer transition-all duration-500 ease-in-out md:hover:w-[55%] group"
+                        onClick={() => onSelect('business')}
+                    >
+                        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                        <div className="z-10 text-center">
+                            <div className="inline-block px-3 py-1 border border-biz-500 text-biz-400 text-xs tracking-widest mb-4 rounded-full uppercase">For Enterprise</div>
+                            <h2 className="text-4xl md:text-5xl font-bold mb-4 group-hover:scale-105 transition-transform">我是企業</h2>
+                            <p className="text-gray-300 mb-8 max-w-sm mx-auto">尋找穩定、合規、可訂閱的勞動力算力？<br />這裏是您的第二個人資部。</p>
+                            <button className="px-8 py-3 bg-biz-600 hover:bg-biz-500 rounded-lg font-bold transition-colors shadow-lg shadow-biz-900/50">
+                                進入企業解決方案 <i className="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* C Side */}
+                    <div
+                        className="relative w-full md:w-1/2 h-1/2 md:h-full bg-talent-50 text-gray-800 flex flex-col justify-center items-center p-10 cursor-pointer transition-all duration-500 ease-in-out md:hover:w-[55%] group border-t md:border-t-0 md:border-l border-gray-200"
+                        onClick={() => onSelect('talent')}
+                    >
+                        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1600')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                        <div className="z-10 text-center">
+                            <div className="inline-block px-3 py-1 bg-talent-100 text-talent-800 text-xs tracking-widest mb-4 rounded-full uppercase">For Talent</div>
+                            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-talent-900 group-hover:scale-105 transition-transform">我是人才</h2>
+                            <p className="text-gray-600 mb-8 max-w-sm mx-auto">不只是打工，而是經營職涯。<br />解鎖地圖，累積你的未來資產。</p>
+                            <button className="px-8 py-3 bg-talent-600 hover:bg-talent-500 text-white rounded-lg font-bold transition-colors shadow-lg shadow-talent-500/30">
+                                啟動職涯地圖 <i className="fas fa-map-marker-alt ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Logo Overlay */}
+                    <div className="absolute top-6 left-6 z-50 pointer-events-none">
+                        <div className="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-sm">
+                            <span className="font-bold text-gray-900 text-lg tracking-wider">愜易居</span>
+                            <span className="text-gray-500 text-xs ml-2">Workforce OS</span>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- Info Modal Component ---
+        const InfoModal = ({ isOpen, onClose }) => {
+            if (!isOpen) return null;
+
+            return (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                    <div className="absolute inset-0 modal-overlay backdrop-blur-sm" onClick={onClose}></div>
+                    <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full relative z-10 overflow-hidden animate-slide-up flex flex-col md:flex-row">
+
+                        {/* Left Side: Visual/Brand */}
+                        <div className="md:w-1/3 bg-biz-900 text-white p-8 flex flex-col justify-between">
+                            <div>
+                                <h3 className="text-2xl font-bold mb-2">愜易居價值主張</h3>
+                                <div className="h-1 w-10 bg-biz-500 mb-6"></div>
+                                <p className="text-biz-200 text-sm leading-relaxed">
+                                    我們致力於重新定義企業與人才的關係，透過數據與科技，創造雙贏的勞動力生態。
+                                </p>
+                            </div>
+                            <div className="mt-8 md:mt-0">
+                                <i className="fas fa-quote-left text-biz-700 text-4xl mb-4 block"></i>
+                                <p className="font-serif italic text-lg">讓您的企業專注於偉大，瑣碎交給我們。</p>
+                            </div>
+                        </div>
+
+                        {/* Right Side: Content */}
+                        <div className="md:w-2/3 p-8 md:p-10 relative bg-gray-50">
+                            <button
+                                onClick={onClose}
+                                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-red-100 hover:text-red-500 transition-colors"
+                            >
+                                <i className="fas fa-times"></i>
+                            </button>
+
+                            <div className="space-y-8">
+                                <div className="flex gap-4">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                                        <i className="fas fa-hands-helping text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 text-lg mb-2">1. 愜易居如何幫助中小企業主？</h4>
+                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                            我們充當您的「第二個人資部」。從繁瑣的招募篩選、教育訓練到薪資結算、勞健保申報，愜易居一站式全包。讓您擺脫行政泥沼，專注於核心業務發展與營收成長。
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-4">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
+                                        <i className="fas fa-fingerprint text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 text-lg mb-2">2. 我們如何與眾不同？</h4>
+                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                            不同於傳統派遣的買斷或高抽成，我們採用創新的「訂閱制」與「點數經濟」。費用透明、調度靈活，且我們 100% 承擔法定雇主責任，讓您在享受彈性人力的同時，完全合規且零法律風險。
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-4">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                        <i className="fas fa-rocket text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 text-lg mb-2">3. 為什麼企業主需要愜易居？</h4>
+                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                            在缺工與少子化時代，擁有「彈性算力」是企業生存的關鍵。透過愜易居，您可以將固定的人事成本轉化為變動的算力成本，隨訂隨用，將經營風險降至最低，保持企業最高的靈活度。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-8 text-right">
+                                <button
+                                    onClick={onClose}
+                                    className="px-6 py-2 bg-biz-900 text-white rounded hover:bg-biz-800 transition-colors text-sm font-bold"
+                                >
+                                    了解了，謝謝
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // 2. Business Page
+        const BusinessPage = ({ onBack }) => {
+            const [isModalOpen, setIsModalOpen] = useState(false);
+
+            return (
+                <div className="bg-white min-h-screen font-sans relative">
+                    <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+                    {/* Biz Nav */}
+                    <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
+                        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                            <div className="flex items-center cursor-pointer" onClick={onBack}>
+                                <div className="font-bold text-xl tracking-wider mr-2">愜易居</div>
+                                <div className="text-xs bg-biz-700 px-2 py-1 rounded">Enterprise</div>
+                            </div>
+                            <div className="hidden md:flex space-x-8 text-sm">
+                                <a href="#painpoints" className="hover:text-biz-300">為什麼選擇我們</a>
+                                <a href="#solutions" className="hover:text-biz-300">核心服務</a>
+                                <a href="#pricing" className="hover:text-biz-300">訂閱方案</a>
+                            </div>
+                            <button className="bg-white text-biz-900 px-4 py-2 rounded text-sm font-bold hover:bg-gray-100">
+                                預約諮詢
+                            </button>
+                        </div>
+                    </nav>
+
+                    {/* Biz Hero - Updated Background */}
+                    <header className="bg-biz-900 text-white py-24 relative overflow-hidden flex items-center min-h-[600px]">
+                        {/* Background Image Overlay */}
+                        <div className="absolute inset-0 z-0">
+                            <img
+                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1600"
+                                alt="Happy employees working together"
+                                className="w-full h-full object-cover opacity-20"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-r from-biz-900 via-biz-900/90 to-transparent"></div>
+                        </div>
+
+                        <div className="container mx-auto px-6 relative z-10">
+                            <div className="max-w-2xl animate-fade-in">
+                                <div className="text-biz-400 font-bold mb-3 tracking-widest uppercase flex items-center">
+                                    <span className="w-8 h-[2px] bg-biz-400 mr-2"></span>
+                                    Workforce OS
+                                </div>
+                                <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                                    您買的不是人力，<br />是「管理好的產能」。
+                                </h1>
+                                <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg">
+                                    台灣中小企業的第二個人資部。<br />
+                                    零風險・全彈性・訂閱制。讓您專注核心業務，繁瑣的勞務交給愜易居。
+                                </p>
+                                <div className="flex flex-wrap gap-4">
+                                    <button className="bg-biz-500 hover:bg-biz-400 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-biz-500/30 transition-all transform hover:-translate-y-1">
+                                        索取 2026 報價單
+                                    </button>
+                                    <button
+                                        onClick={() => window.location.href = '#painpoints'}
+                                        className="border border-gray-500 hover:border-white text-gray-300 hover:text-white px-8 py-3 rounded-lg transition-all"
+                                    >
+                                        了解運作模式
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Pain Points Comparison */}
+                    <section id="painpoints" className="py-20 bg-biz-50">
+                        <div className="container mx-auto px-6">
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl font-bold text-gray-900">為什麼傳統聘僱不再適用？</h2>
+                                <p className="text-gray-600 mt-4">擺脫隱形成本，轉向「勞動力算力」思維</p>
+                            </div>
+                            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                                {/* Traditional */}
+                                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 opacity-70 hover:opacity-100 transition-opacity">
+                                    <div className="text-center mb-6">
+                                        <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i className="fas fa-user-clock text-gray-500 text-2xl"></i>
+                                        </div>
+                                        <h3 className="text-xl font-bold text-gray-700">自聘工讀生/兼職</h3>
+                                    </div>
+                                    <ul className="space-y-4 text-gray-600 text-sm">
+                                        <li className="flex items-start"><i className="fas fa-times text-red-500 mt-1 mr-3"></i> 需負擔勞健保、勞退行政成本</li>
+                                        <li className="flex items-start"><i className="fas fa-times text-red-500 mt-1 mr-3"></i> 人員請假、離職需重新招募訓練</li>
+                                        <li className="flex items-start"><i className="fas fa-times text-red-500 mt-1 mr-3"></i> 淡季閒置人力造成成本浪費</li>
+                                        <li className="flex items-start"><i className="fas fa-times text-red-500 mt-1 mr-3"></i> 勞資糾紛風險完全自負</li>
+                                    </ul>
+                                </div>
+                                {/* Qie Yi Ju */}
+                                <div className="bg-white p-8 rounded-xl shadow-xl border-t-4 border-biz-600 transform scale-105">
+                                    <div className="text-center mb-6">
+                                        <div className="w-16 h-16 bg-biz-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i className="fas fa-robot text-biz-600 text-2xl"></i>
+                                        </div>
+                                        <h3 className="text-xl font-bold text-biz-900">愜易居 訂閱制</h3>
+                                    </div>
+                                    <ul className="space-y-4 text-gray-700 text-sm font-medium">
+                                        <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> 費用全包（含勞健保、退休金）</li>
+                                        <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> SOP化管理，隨時調度，即刻上工</li>
+                                        <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> 依需求扣點，用多少算多少</li>
+                                        <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> 100% 法定雇主責任由我們承擔</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {/* Modal Trigger Button */}
+                            <div className="text-center">
+                                <button
+                                    onClick={() => setIsModalOpen(true)}
+                                    className="inline-flex items-center text-biz-600 font-bold hover:text-biz-800 transition-colors border-b-2 border-biz-200 hover:border-biz-600 pb-1"
+                                >
+                                    <i className="fas fa-info-circle mr-2"></i>
+                                    深入了解愜易居的獨特價值
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Solutions */}
+                    <section id="solutions" className="py-20">
+                        <div className="container mx-auto px-6">
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl font-bold text-gray-900">全方位產能解決方案</h2>
+                                <p className="text-gray-600 mt-4">不僅是基礎人力，更是您的專業後勤</p>
+                            </div>
+                            <div className="grid md:grid-cols-3 gap-8">
+                                <div className="group p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all hover:border-biz-500">
+                                    <div className="text-biz-600 mb-4 text-3xl"><i className="fas fa-box-open"></i></div>
+                                    <h3 className="text-xl font-bold mb-3">彈性時數包</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                        針對行政、包裝、理貨等標準化作業。透過點數系統，一鍵調度，解決訂單爆量時的人力缺口。
+                                    </p>
+                                    <span className="text-xs bg-biz-50 text-biz-700 px-2 py-1 rounded">1.0 點/hr</span>
+                                </div>
+                                <div className="group p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all hover:border-biz-500">
+                                    <div className="text-biz-600 mb-4 text-3xl"><i className="fas fa-laptop-code"></i></div>
+                                    <h3 className="text-xl font-bold mb-3">技術人才訂閱</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                        設計雲 (Design Cloud) 與專業管家 (Fractional Pro)。讓您擁有美編吃到飽或每週駐點的資深財務/人資。
+                                    </p>
+                                    <span className="text-xs bg-biz-50 text-biz-700 px-2 py-1 rounded">專案扣點制</span>
+                                </div>
+                                <div className="group p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all hover:border-biz-500">
+                                    <div className="text-biz-600 mb-4 text-3xl"><i className="fas fa-utensils"></i></div>
+                                    <h3 className="text-xl font-bold mb-3">餐飲快閃支援</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                        尖峰時刻的「雲端洗碗機」與外場支援。採用班次券制度，一口價含稅含加班費，成本完全可控。
+                                    </p>
+                                    <span className="text-xs bg-biz-50 text-biz-700 px-2 py-1 rounded">票券制</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pricing */}
+                    <section id="pricing" className="py-20 bg-biz-900 text-white">
+                        <div className="container mx-auto px-6">
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl font-bold">透明的點數訂閱制</h2>
+                                <p className="text-biz-300 mt-4">加入會員，鎖定全年最低費率 (1點 = 1標準工時)</p>
+                            </div>
+                            <div className="flex flex-col md:flex-row justify-center gap-8 max-w-5xl mx-auto">
+                                {/* Non-Member */}
+                                <div className="bg-biz-800 p-8 rounded-xl border border-biz-700 flex-1 opacity-75">
+                                    <h3 className="text-xl font-bold mb-2">零售散客</h3>
+                                    <div className="text-3xl font-bold mb-4">$360 <span className="text-sm font-normal text-gray-400">/ 點</span></div>
+                                    <p className="text-sm text-gray-400 mb-6">適合臨時性、一次性的極短期需求。</p>
+                                    <ul className="text-sm space-y-3 mb-8 text-gray-300">
+                                        <li><i className="fas fa-check mr-2"></i> 無月費</li>
+                                        <li><i className="fas fa-times mr-2"></i> 無優先權</li>
+                                        <li><i className="fas fa-times mr-2"></i> 不適用技術人才</li>
+                                    </ul>
+                                </div>
+
+                                {PRICING_PLANS.map((plan, idx) => (
+                                    <div key={idx} className={`bg-white text-gray-900 p-8 rounded-xl flex-1 relative ${plan.isPopular ? 'transform md:-translate-y-4 shadow-2xl border-4 border-biz-500' : ''}`}>
+                                        {plan.isPopular && <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-biz-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Most Popular</div>}
+                                        <h3 className="text-xl font-bold mb-2 text-biz-900">{plan.name}</h3>
+                                        <div className="flex items-baseline mb-1">
+                                            <span className="text-4xl font-bold">{plan.monthlyFee}</span>
+                                            <span className="text-sm text-gray-500 ml-2">/ 月</span>
+                                        </div>
+                                        <div className="text-biz-600 font-bold mb-4 text-sm bg-biz-50 inline-block px-2 py-1 rounded">費率：{plan.hourlyRate}</div>
+                                        <p className="text-xs text-gray-500 mb-6 border-b pb-4">{plan.target}</p>
+
+                                        <ul className="text-sm space-y-3 mb-8">
+                                            {plan.features.map((feat, i) => (
+                                                <li key={i} className="flex items-center"><i className="fas fa-check text-green-500 mr-2"></i> {feat}</li>
+                                            ))}
+                                        </ul>
+                                        <button className={`w-full py-3 rounded-lg font-bold transition-colors ${plan.isPopular ? 'bg-biz-600 text-white hover:bg-biz-700' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}>
+                                            選擇方案
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Trust Footnote */}
+                    <div className="bg-gray-50 py-8 border-t border-gray-200">
+                        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs">
+                            <div className="flex items-center gap-4 mb-4 md:mb-0">
+                                <span><i className="fas fa-shield-alt mr-1"></i> 100% 合規申報</span>
+                                <span><i className="fas fa-file-invoice-dollar mr-1"></i> 實開統一發票</span>
+                            </div>
+                            <div>
+                                &copy; 2026 Dian Zi Xiang Ltd. All rights reserved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // 3. Talent Page
+        const TalentPage = ({ onBack }) => {
+            return (
+                <div className="bg-talent-50 min-h-screen font-sans">
+                    {/* Talent Nav */}
+                    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
+                        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                            <div className="flex items-center cursor-pointer" onClick={onBack}>
+                                <div className="font-bold text-xl tracking-wider mr-2 text-talent-900">愜易居</div>
+                                <div className="text-xs bg-talent-100 text-talent-800 px-2 py-1 rounded">Career</div>
+                            </div>
+                            <div className="hidden md:flex space-x-8 text-sm text-gray-600">
+                                <a href="#vision" className="hover:text-talent-600">願景</a>
+                                <a href="#levels" className="hover:text-talent-600">分級制度</a>
+                                <a href="#benefits" className="hover:text-talent-600">地圖卡福利</a>
+                            </div>
+                            <button className="bg-talent-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-talent-700 shadow-md shadow-talent-500/30">
+                                立即加入
+                            </button>
+                        </div>
+                    </nav>
+
+                    {/* Talent Hero */}
+                    <header className="relative py-20 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-talent-100 to-white z-0"></div>
+                        <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center">
+                            <div className="md:w-1/2 mb-10 md:mb-0">
+                                <span className="text-talent-600 font-bold tracking-widest uppercase text-sm bg-white px-3 py-1 rounded-full shadow-sm mb-6 inline-block">The Legend Map</span>
+                                <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
+                                    別讓工作綁住你，<br />
+                                    讓工作<span className="text-talent-600">配合你</span>。
+                                </h1>
+                                <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-md">
+                                    全台首創「職涯地圖卡」制度。在這裡，我們不只發薪水，更投資你的未來。從行政到技術，從兼職到專業管家。
+                                </p>
+                                <div className="flex gap-4">
+                                    <button className="bg-talent-600 hover:bg-talent-700 text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-talent-600/20 transition-all transform hover:-translate-y-1">
+                                        啟動職涯地圖
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="md:w-1/2 relative">
+                                {/* Visual representation of a map/card */}
+                                <div className="bg-white p-6 rounded-2xl shadow-2xl rotate-3 border-4 border-white max-w-sm mx-auto relative z-10">
+                                    <div className="bg-gradient-to-br from-talent-500 to-talent-600 h-40 rounded-xl mb-4 flex items-center justify-center text-white relative overflow-hidden">
+                                        <i className="fas fa-crown text-6xl opacity-20 absolute -bottom-4 -right-4"></i>
+                                        <div className="text-center">
+                                            <div className="text-sm opacity-80 uppercase tracking-widest">Level 5</div>
+                                            <div className="text-3xl font-bold">職人傳奇</div>
+                                        </div>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <div className="h-2 bg-gray-100 rounded-full w-full overflow-hidden">
+                                            <div className="h-full bg-talent-500 w-3/4"></div>
+                                        </div>
+                                        <div className="flex justify-between text-xs text-gray-500 font-medium">
+                                            <span>XP: 1500 hrs</span>
+                                            <span>Next: Partner</span>
+                                        </div>
+                                        <div className="pt-4 grid grid-cols-3 gap-2 text-center text-xs text-gray-600">
+                                            <div className="bg-gray-50 p-2 rounded"><i className="fas fa-home text-talent-500 mb-1 block"></i>購屋補貼</div>
+                                            <div className="bg-gray-50 p-2 rounded"><i className="fas fa-graduation-cap text-talent-500 mb-1 block"></i>進修金</div>
+                                            <div className="bg-gray-50 p-2 rounded"><i className="fas fa-baby text-talent-500 mb-1 block"></i>子女補助</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Decorative elements */}
+                                <div className="absolute top-10 right-10 w-20 h-20 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                                <div className="absolute -bottom-8 left-20 w-20 h-20 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Levels */}
+                    <section id="levels" className="py-20 bg-white">
+                        <div className="container mx-auto px-6">
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl font-bold text-gray-900">分級錄用．遊戲化晉升</h2>
+                                <p className="text-gray-500 mt-4">你的每一小時付出，都在累積未來的籌碼</p>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                                {TALENT_LEVELS.map((level, idx) => (
+                                    <div key={idx} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:border-talent-300 transition-all group">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div>
+                                                <h3 className="text-talent-600 font-bold text-sm tracking-wide uppercase mb-1">{level.level}</h3>
+                                                <h4 className="text-2xl font-bold text-gray-900">{level.title}</h4>
+                                            </div>
+                                            <div className="bg-talent-50 text-talent-800 font-bold px-3 py-1 rounded text-sm">
+                                                {level.pay}
+                                            </div>
+                                        </div>
+                                        <div className="mb-6 text-sm text-gray-500 bg-gray-50 p-3 rounded-lg inline-block">
+                                            <i className="fas fa-exclamation-circle mr-2"></i> {level.req}
+                                        </div>
+                                        <ul className="space-y-3">
+                                            {level.benefits.map((b, i) => (
+                                                <li key={i} className="flex items-center text-gray-700">
+                                                    <i className="fas fa-star text-yellow-400 mr-3"></i> {b}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <div className="mt-8 pt-6 border-t border-gray-100 text-center">
+                                            <span className="text-xs text-gray-400">
+                                                {idx === 0 ? "由此開始你的旅程" : "解鎖更多高階權限"}
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="text-center mt-8">
+                                <p className="text-xs text-red-500 bg-red-50 inline-block px-4 py-2 rounded-full">
+                                    <i className="fas fa-ban mr-2"></i> 錄用紅線：月可排班小於 35 小時者，恕不錄用
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Benefits Grid */}
+                    <section id="benefits" className="py-20 bg-talent-900 text-white">
+                        <div className="container mx-auto px-6">
+                            <div className="flex flex-col md:flex-row items-center gap-12">
+                                <div className="md:w-1/3">
+                                    <h2 className="text-3xl font-bold mb-6">不只是打工<br />是你的生涯加速器</h2>
+                                    <p className="text-talent-200 mb-8 leading-relaxed">
+                                        我們知道你有夢想，可能想當設計師、想開咖啡廳、或正在準備國考。愜易居提供的不只是薪水，而是支持你追夢的資源。
+                                    </p>
+                                    <button className="text-white border border-white px-6 py-2 rounded-lg hover:bg-white hover:text-talent-900 transition-colors">
+                                        查看完整福利手冊
+                                    </button>
+                                </div>
+                                <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors">
+                                        <i className="fas fa-chart-line text-3xl text-talent-400 mb-4"></i>
+                                        <h3 className="font-bold text-lg mb-2">快速加薪機制</h3>
+                                        <p className="text-sm text-gray-300">每累積 175 小時工時，即啟動調薪評估。你的努力，系統都看得到。</p>
+                                    </div>
+                                    <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors">
+                                        <i className="fas fa-tools text-3xl text-talent-400 mb-4"></i>
+                                        <h3 className="font-bold text-lg mb-2">生產力工具買單</h3>
+                                        <p className="text-sm text-gray-300">達標者由公司補助 Adobe Creative Cloud、ChatGPT Plus 等專業工具訂閱費。</p>
+                                    </div>
+                                    <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors">
+                                        <i className="fas fa-home text-3xl text-talent-400 mb-4"></i>
+                                        <h3 className="font-bold text-lg mb-2">安家計畫</h3>
+                                        <p className="text-sm text-gray-300">傳奇等級享購屋補貼資格、子女學費補助與父母健檢津貼。</p>
+                                    </div>
+                                    <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors">
+                                        <i className="fas fa-shield-alt text-3xl text-talent-400 mb-4"></i>
+                                        <h3 className="font-bold text-lg mb-2">100% 法規保障</h3>
+                                        <p className="text-sm text-gray-300">我們最基本的堅持。勞保、健保、勞退6% 絕對足額提撥，不玩文字遊戲。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            );
+        };
+
+        // Main App Component
+        const App = () => {
+            const [view, setView] = useState('home'); // home, business, talent
+
+            // Handle browser back button
+            useEffect(() => {
+                const handlePopState = (event) => {
+                    setView('home');
+                };
+                window.addEventListener('popstate', handlePopState);
+                return () => window.removeEventListener('popstate', handlePopState);
+            }, []);
+
+            const navigateTo = (newView) => {
+                window.history.pushState({ view: newView }, '', `#${newView}`);
+                setView(newView);
+                window.scrollTo(0, 0);
+            };
+
+            return (
+                <div className="antialiased">
+                    {view === 'home' && <LandingScreen onSelect={navigateTo} />}
+                    {view === 'business' && <BusinessPage onBack={() => navigateTo('home')} />}
+                    {view === 'talent' && <TalentPage onBack={() => navigateTo('home')} />}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
