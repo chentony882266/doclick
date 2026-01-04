@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import InfoModal from './InfoModal';
 import PriceListModal from './PriceListModal';
 import ServiceSpecsModal from './ServiceSpecsModal';
+import ContactModal from './ContactModal';
 import { PRICING_PLANS } from '../constants/data';
 
 const BusinessPage = ({ onBack }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isPriceListModalOpen, setIsPriceListModalOpen] = useState(false);
     const [isServiceSpecsModalOpen, setIsServiceSpecsModalOpen] = useState(false);
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
     return (
         <div className="bg-white min-h-screen font-sans relative">
             <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             <PriceListModal isOpen={isPriceListModalOpen} onClose={() => setIsPriceListModalOpen(false)} />
             <ServiceSpecsModal isOpen={isServiceSpecsModalOpen} onClose={() => setIsServiceSpecsModalOpen(false)} />
+            <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
 
             {/* Biz Nav */}
             <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
@@ -359,7 +362,12 @@ const BusinessPage = ({ onBack }) => {
             <div className="bg-gray-50 py-8 border-t border-gray-200">
                 <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs">
                     <div className="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0">
-                        <span className="font-bold text-gray-700">聯繫愜易居</span>
+                        <button
+                            onClick={() => setIsContactModalOpen(true)}
+                            className="font-bold text-gray-700 hover:text-biz-600 transition-colors border-b-2 border-transparent hover:border-biz-600"
+                        >
+                            聯繫愜易居
+                        </button>
                         <span className="hidden md:inline text-gray-300">|</span>
                         <span>點籽響有限公司</span>
                         <span className="hidden md:inline text-gray-300">|</span>
