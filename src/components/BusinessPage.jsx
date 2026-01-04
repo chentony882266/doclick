@@ -3,6 +3,7 @@ import InfoModal from './InfoModal';
 import PriceListModal from './PriceListModal';
 import ServiceSpecsModal from './ServiceSpecsModal';
 import ContactModal from './ContactModal';
+import ConsultationModal from './ConsultationModal';
 import { PRICING_PLANS } from '../constants/data';
 
 const BusinessPage = ({ onBack }) => {
@@ -10,6 +11,7 @@ const BusinessPage = ({ onBack }) => {
     const [isPriceListModalOpen, setIsPriceListModalOpen] = useState(false);
     const [isServiceSpecsModalOpen, setIsServiceSpecsModalOpen] = useState(false);
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+    const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
     return (
         <div className="bg-white min-h-screen font-sans relative">
@@ -17,6 +19,7 @@ const BusinessPage = ({ onBack }) => {
             <PriceListModal isOpen={isPriceListModalOpen} onClose={() => setIsPriceListModalOpen(false)} />
             <ServiceSpecsModal isOpen={isServiceSpecsModalOpen} onClose={() => setIsServiceSpecsModalOpen(false)} />
             <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+            <ConsultationModal isOpen={isConsultationModalOpen} onClose={() => setIsConsultationModalOpen(false)} />
 
             {/* Biz Nav */}
             <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
@@ -30,7 +33,10 @@ const BusinessPage = ({ onBack }) => {
                         <a href="#solutions" className="hover:text-biz-300">核心服務</a>
                         <a href="#pricing" className="hover:text-biz-300">開始訂製我的模組</a>
                     </div>
-                    <button className="bg-white text-biz-900 px-4 py-2 rounded text-sm font-bold hover:bg-gray-100">
+                    <button
+                        onClick={() => setIsConsultationModalOpen(true)}
+                        className="bg-white text-biz-900 px-4 py-2 rounded text-sm font-bold hover:bg-gray-100 transition-colors"
+                    >
                         預約諮詢
                     </button>
                 </div>
