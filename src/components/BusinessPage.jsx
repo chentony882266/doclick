@@ -79,36 +79,78 @@ const BusinessPage = ({ onBack }) => {
                         <h2 className="text-5xl font-bold text-gray-900 leading-tight">傳統招聘模式 vs. 愜易居隨插即用模組化</h2>
                         <p className="text-gray-600 mt-6 text-xl">用真實的協作，取代履歷的片面之詞</p>
                     </div>
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-                        {/* Traditional */}
-                        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 opacity-70 hover:opacity-100 transition-opacity">
-                            <div className="text-center mb-6">
-                                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <i className="fas fa-user-clock text-gray-500 text-2xl"></i>
+
+                    <div className="flex flex-col gap-12 max-w-6xl mx-auto mb-12">
+                        {/* Traditional Recruiting Flow */}
+                        <div className="bg-orange-50/50 p-8 rounded-2xl border border-orange-100">
+                            <h3 className="text-2xl font-bold text-center mb-8">傳統招募</h3>
+                            <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
+                                {/* Steps */}
+                                <div className="flex items-center">
+                                    <div className="bg-white border-2 border-gray-600 text-gray-800 font-bold py-4 px-8 rounded-lg shadow-sm w-32 text-center text-lg">
+                                        [履歷]
+                                    </div>
+                                    <i className="fas fa-arrow-right text-gray-400 text-xl mx-4"></i>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-700">自聘工讀生/兼職</h3>
+                                <div className="flex items-center">
+                                    <div className="bg-white border-2 border-gray-600 text-gray-800 font-bold py-4 px-8 rounded-lg shadow-sm w-32 text-center text-lg">
+                                        [面試]
+                                    </div>
+                                    <i className="fas fa-arrow-right text-gray-400 text-xl mx-4"></i>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="bg-white border-2 border-gray-600 text-gray-800 font-bold py-4 px-8 rounded-lg shadow-sm w-32 text-center text-lg">
+                                        [聘用]
+                                    </div>
+                                    <i className="fas fa-arrow-right text-gray-400 text-xl mx-4"></i>
+                                </div>
+                                <div>
+                                    <div className="bg-white border-2 border-gray-600 text-gray-800 font-bold py-3 px-6 rounded-lg shadow-sm w-32 text-center flex flex-col items-center justify-center">
+                                        <div className="text-lg mb-1">[祈禱]</div>
+                                        <i className="fas fa-praying-hands text-gray-600 text-xl"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <ul className="space-y-4 text-gray-600 text-sm">
-                                <li className="flex items-start"><i className="fas fa-times text-red-500 mt-1 mr-3"></i> 需負擔勞健保、勞退行政成本</li>
-                                <li className="flex items-start"><i className="fas fa-times text-red-500 mt-1 mr-3"></i> 人員請假、離職需重新招募訓練</li>
-                                <li className="flex items-start"><i className="fas fa-times text-red-500 mt-1 mr-3"></i> 淡季閒置人力造成成本浪費</li>
-                                <li className="flex items-start"><i className="fas fa-times text-red-500 mt-1 mr-3"></i> 勞資糾紛風險完全自負</li>
-                            </ul>
+                            <p className="text-center text-gray-700 font-medium text-lg">
+                                結果：高風險。你只認識「面試模式」下的他，聘用後才發現能力、文化完全不符。
+                            </p>
                         </div>
-                        {/* Qie Yi Ju */}
-                        <div className="bg-white p-8 rounded-xl shadow-xl border-t-4 border-biz-600 transform scale-105">
-                            <div className="text-center mb-6">
-                                <div className="w-16 h-16 bg-biz-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <i className="fas fa-robot text-biz-600 text-2xl"></i>
+
+                        {/* Qie Yi Ju Flow */}
+                        <div className="bg-green-50/50 p-8 rounded-2xl border border-green-100">
+                            <h3 className="text-2xl font-bold text-center mb-8">愜易居『先試後聘』</h3>
+                            <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
+                                {/* Steps */}
+                                <div className="flex items-center">
+                                    <div className="bg-[#0e7490] text-white font-bold py-6 px-4 rounded-lg shadow-md w-40 text-center text-xl">
+                                        [派遣]
+                                    </div>
+                                    <i className="fas fa-arrow-right text-[#0e7490] text-xl mx-2 md:mx-4"></i>
                                 </div>
-                                <h3 className="text-xl font-bold text-biz-900">愜易居 訂閱制</h3>
+                                <div className="flex items-center">
+                                    <div className="bg-[#0891b2] text-white font-bold py-4 px-4 rounded-lg shadow-md w-40 text-center flex flex-col items-center justify-center h-24">
+                                        <div className="text-lg leading-tight mb-1">[530+ 小時<br />真實任務]</div>
+                                    </div>
+                                    <i className="fas fa-arrow-right text-[#0891b2] text-xl mx-2 md:mx-4"></i>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="bg-[#5eead4] text-[#134e4a] font-bold py-3 px-2 rounded-lg shadow-md w-44 text-center flex flex-col items-center justify-center h-24 border-2 border-[#14b8a6]">
+                                        <i className="fas fa-check text-yellow-500 text-2xl mb-1 absolute -mt-10 mr-10 shadow-sm bg-white rounded-full p-1"></i>
+                                        <div className="text-lg leading-tight mb-1 mt-2">[文化與能力驗證]</div>
+                                        <i className="fas fa-check text-white text-sm"></i>
+                                    </div>
+                                    <i className="fas fa-arrow-right text-[#14b8a6] text-xl mx-2 md:mx-4"></i>
+                                </div>
+                                <div>
+                                    <div className="bg-[#2dd4bf] text-white font-bold py-3 px-6 rounded-lg shadow-md w-32 text-center flex flex-col items-center justify-center h-24">
+                                        <div className="text-xl mb-1">[轉正]</div>
+                                        <i className="fas fa-trophy text-yellow-100 text-xl"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <ul className="space-y-4 text-gray-700 text-sm font-medium">
-                                <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> 費用全包（含勞健保、退休金）</li>
-                                <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> SOP化管理，隨時調度，即刻上工</li>
-                                <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> 依需求扣點，用多少算多少</li>
-                                <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> 100% 法定雇主責任由我們承擔</li>
-                            </ul>
+                            <p className="text-center text-gray-800 font-bold text-lg">
+                                結果：零風險。你聘用的是一位已被團隊驗證、無縫接軌的即戰力。
+                            </p>
                         </div>
                     </div>
 
