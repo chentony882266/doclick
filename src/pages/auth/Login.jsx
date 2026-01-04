@@ -24,7 +24,7 @@ const Login = () => {
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <Link to="/" className="flex justify-center text-3xl font-bold text-talent-600 tracking-wider mb-2">
-                    愜易居
+                    愜意居
                 </Link>
                 <h2 className="text-center text-3xl font-extrabold text-gray-900">
                     登入您的帳戶

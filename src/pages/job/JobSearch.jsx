@@ -28,7 +28,7 @@ const JobSearch = () => {
             <nav className="bg-white shadow-sm sticky top-0 z-10">
                 <div className="container mx-auto px-4 py-3 flex justify-between items-center">
                     <div className="flex items-center cursor-pointer" onClick={() => navigate('/talent')}>
-                        <span className="font-bold text-xl text-talent-600 tracking-wider">惬易居</span>
+                        <span className="font-bold text-xl text-talent-600 tracking-wider">愜意居</span>
                         <span className="text-xs text-gray-400 ml-2 border-l pl-2">Job Seeker</span>
                     </div>
                     <div className="flex items-center gap-4">
@@ -111,8 +111,8 @@ const JobSearch = () => {
                                 <div className="mb-4 sm:mb-0">
                                     <div className="flex items-center gap-2 mb-1">
                                         <span className={`text-xs px-2 py-0.5 rounded font-bold ${job.type === '短期' ? 'bg-blue-50 text-blue-600' :
-                                                job.type === '長期' ? 'bg-green-50 text-green-600' :
-                                                    'bg-purple-50 text-purple-600'
+                                            job.type === '長期' ? 'bg-green-50 text-green-600' :
+                                                'bg-purple-50 text-purple-600'
                                             }`}>
                                             {job.type}
                                         </span>

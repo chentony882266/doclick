@@ -14,7 +14,7 @@ const DashboardLayout = () => {
             {/* Sidebar */}
             <aside className="fixed inset-y-0 left-0 w-64 bg-biz-900 text-white transition-transform duration-300 transform md:translate-x-0 -translate-x-full z-30">
                 <div className="flex items-center justify-center h-16 border-b border-biz-700">
-                    <span className="text-2xl font-bold tracking-wider">愜易居 <span className="text-xs font-normal text-biz-400">Biz</span></span>
+                    <span className="text-2xl font-bold tracking-wider">愜意居 <span className="text-xs font-normal text-biz-400">Biz</span></span>
                 </div>
                 <nav className="p-4 space-y-2">
                     <NavLink
