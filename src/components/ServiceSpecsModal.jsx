@@ -77,6 +77,75 @@ const SERVICE_SPECS = [
             { title: '樣品寄送', desc: '負責樣品打包、安排快遞寄送給客戶。' },
         ]
     },
+    {
+        id: 'packing',
+        title: '理貨包裝貼標',
+        icon: 'fa-box',
+        color: 'text-indigo-600',
+        bg: 'bg-indigo-50',
+        border: 'border-indigo-200',
+        items: [
+            { title: '商品貼標', desc: '依據指示，將條碼、中文標籤、促銷貼紙準確黏貼於商品指定位置。' },
+            { title: '組合包裝', desc: '將多樣商品組合成禮盒或促銷組，包含折紙盒、放入填充物、封箱。' },
+            { title: '商品上架', desc: '將驗收完成的商品，依照貨架編號歸位擺放整齊。' },
+            { title: '訂單撿貨', desc: '依據撿貨單，從貨架上拿取正確數量與規格的商品。' },
+            { title: '包裝封箱', desc: '檢查商品外觀無損後，進行防撞包裝（氣泡紙/緩衝材）與封箱作業。' },
+            { title: '面單黏貼', desc: '準確黏貼物流單，確保「單貨一致」。' },
+            { title: '交寄作業', desc: '協助將包裹搬運至指定集貨區，供物流司機收件。' },
+            { title: '盤點協作', desc: '配合正職人員進行「盲盤」或「數量清點」，協助填寫盤點表。' },
+            { title: '庫房整理', desc: '整理紙箱、清除包材廢料，維持走道暢通與作業區整潔。' },
+        ]
+    },
+    {
+        id: 'forklift',
+        title: '倉儲堆高機 (技術型)',
+        icon: 'fa-truck-loading',
+        color: 'text-slate-600',
+        bg: 'bg-slate-50',
+        border: 'border-slate-200',
+        items: [
+            { title: '裝卸貨作業', desc: '配合貨櫃或貨車抵達時間，將棧板貨物安全卸下或裝載上車。' },
+            { title: '高價存取', desc: '重型料架的倉庫，精準地將貨物存取至指定儲位。' },
+            { title: '作業前檢查', desc: '上工前執行標準點檢（檢查煞車、牙叉插銷、電池水/油位、輪胎胎紋）。' },
+            { title: '充電與能源管理', desc: '負責電動堆高機的充電作業，或柴油/瓦斯堆高機的燃料補充提醒（不負責採購燃料）。' },
+            { title: '異常回報', desc: '若發現機具異音、漏油或操作不順，立即停止作業並通報客戶主管。' },
+        ]
+    },
+    {
+        id: 'design',
+        title: '美術設計編輯',
+        icon: 'fa-paint-brush',
+        color: 'text-pink-600',
+        bg: 'bg-pink-50',
+        border: 'border-pink-200',
+        items: [
+            { title: '社群圖文編輯', desc: '製作 FB/IG 貼文配圖、限時動態版型、Line@ 推播圖（需由客戶提供文案與尺寸規範）。' },
+            { title: '廣告素材製作', desc: '製作 Google Display Network (GDN) 廣告圖、活動 Banner。' },
+            { title: '美術修圖', desc: '產品去背、修圖、製作電商商品詳情頁 (Landing Page) 的長條圖切版。' },
+            { title: '廣告宣傳品', desc: '名片、DM 傳單、海報、排版設計等。' },
+            { title: '包裝輔助', desc: '協助將 Logo 放置於刀模圖上，製作貼紙或簡易包裝盒設計（需由客戶提供廠商刀模）。' },
+            { title: '識別延伸', desc: '依據客戶現有的企業識別規範，將 Logo 應用於簡報母片、信封信紙、員工證等週邊。' },
+            { title: '素材管理', desc: '協助整理客戶的圖庫、照片素材，建立標準化的命名與歸檔邏輯。' },
+        ]
+    },
+    {
+        id: 'web_design',
+        title: '銷售網站美編',
+        icon: 'fa-laptop-code',
+        color: 'text-purple-600',
+        bg: 'bg-purple-50',
+        border: 'border-purple-200',
+        items: [
+            { title: '套圖素材製作修改', desc: '協助客戶既有套圖修改及排版 (此項非技術性人員價格)' },
+            { title: '商品詳情頁面管理製作', desc: '製作各大通路（蝦皮/Momo/PChome）專用的商品介紹圖，包含規格表、細節近拍修圖、競品比較圖。(此項非技術性人員價格)' },
+            { title: '修圖', desc: '運用 AI 工具或Adobe系列工具批次處理去背、擴圖、調整模特兒表情。(此項非技術性人員價格)' },
+            { title: '動態圖製作', desc: '製作展示產品功能的簡易動態圖（如：防潑水測試、衣服彈性展示），提升頁面停留時間。' },
+            { title: '網站活動換檔', desc: '配合雙11、母親節等檔期，更換官網首頁的主視覺 (Key Visual)、彈跳視窗 (Pop-up) 與分類Bar圖示。' },
+            { title: '多通路尺寸延展', desc: '將同一套主視覺，快速調整為不同尺寸（如：FB 廣告圖 1080x1080、限動 1080x1920、Line 貼文、官網 Banner 1920x600）。' },
+            { title: '後台上下架協作', desc: '協助在開店平台後台（如 SHOPLINE/Cyberbiz）上傳圖片、更新 Alt 文字（SEO優化），但不涉及價格設定。' },
+            { title: 'AI或軟體生成素材', desc: '熟練使用AI工具或 Adobe系列工具生成情境背景圖（如：將產品合成在北歐風客廳），降低攝影棚租借成本。' },
+        ]
+    },
 ];
 
 const ServiceSpecsModal = ({ isOpen, onClose }) => {
