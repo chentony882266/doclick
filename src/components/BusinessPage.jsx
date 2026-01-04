@@ -6,6 +6,7 @@ import ContactModal from './ContactModal';
 import ConsultationModal from './ConsultationModal';
 import CostComparisonModal from './CostComparisonModal';
 import SaveTroubleModal from './SaveTroubleModal';
+import SaveRiskModal from './SaveRiskModal';
 import { PRICING_PLANS } from '../constants/data';
 
 const BusinessPage = ({ onBack }) => {
@@ -16,6 +17,7 @@ const BusinessPage = ({ onBack }) => {
     const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
     const [isCostComparisonModalOpen, setIsCostComparisonModalOpen] = useState(false);
     const [isSaveTroubleModalOpen, setIsSaveTroubleModalOpen] = useState(false);
+    const [isSaveRiskModalOpen, setIsSaveRiskModalOpen] = useState(false);
 
     return (
         <div className="bg-white min-h-screen font-sans relative">
@@ -26,6 +28,7 @@ const BusinessPage = ({ onBack }) => {
             <ConsultationModal isOpen={isConsultationModalOpen} onClose={() => setIsConsultationModalOpen(false)} />
             <CostComparisonModal isOpen={isCostComparisonModalOpen} onClose={() => setIsCostComparisonModalOpen(false)} />
             <SaveTroubleModal isOpen={isSaveTroubleModalOpen} onClose={() => setIsSaveTroubleModalOpen(false)} />
+            <SaveRiskModal isOpen={isSaveRiskModalOpen} onClose={() => setIsSaveRiskModalOpen(false)} />
 
             {/* Biz Nav */}
             <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
@@ -370,28 +373,26 @@ const BusinessPage = ({ onBack }) => {
                             </div>
                         </button>
 
-                        {/* Premium Plan */}
-                        {PRICING_PLANS.slice(1).map((plan, idx) => (
-                            <div key={idx} className={`bg-white text-gray-900 p-8 rounded-xl flex-1 relative ${plan.isPopular ? 'transform md:-translate-y-4 shadow-2xl border-4 border-biz-500' : ''}`}>
-                                {plan.isPopular && <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-biz-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Most Popular</div>}
-                                <h3 className="text-xl font-bold mb-2 text-biz-900">{plan.name}</h3>
-                                <div className="flex items-baseline mb-1">
-                                    <span className="text-4xl font-bold">{plan.monthlyFee}</span>
-                                    <span className="text-sm text-gray-500 ml-2">/ 月</span>
-                                </div>
-                                <div className="text-biz-600 font-bold mb-4 text-sm bg-biz-50 inline-block px-2 py-1 rounded">費率：{plan.hourlyRate}</div>
-                                <p className="text-xs text-gray-500 mb-6 border-b pb-4">{plan.target}</p>
+                        {/* How We Save You Risk Card - PRO */}
+                        <button
+                            onClick={() => setIsSaveRiskModalOpen(true)}
+                            className="bg-rose-50 p-8 rounded-xl border border-rose-100 flex-1 hover:shadow-2xl transition-all hover:scale-[1.02] cursor-pointer flex flex-col items-center justify-center group text-left w-full md:w-auto relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-rose-200 to-transparent -mr-10 -mt-10 rounded-full opacity-50"></div>
+                            {/* Recommended Badge */}
+                            <div className="absolute top-0 right-0 bg-rose-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">RECOMMENDED</div>
 
-                                <ul className="text-sm space-y-3 mb-8">
-                                    {plan.features.map((feat, i) => (
-                                        <li key={i} className="flex items-center"><i className="fas fa-check text-green-500 mr-2"></i> {feat}</li>
-                                    ))}
-                                </ul>
-                                <button className={`w-full py-3 rounded-lg font-bold transition-colors ${plan.isPopular ? 'bg-biz-600 text-white hover:bg-biz-700' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}>
-                                    選擇方案
-                                </button>
+                            <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-rose-200 transition-colors">
+                                <i className="fas fa-shield-alt text-3xl text-rose-600"></i>
                             </div>
-                        ))}
+                            <h3 className="text-2xl font-bold mb-4 text-center text-gray-800">愜易居營運模組如何幫您省風險</h3>
+                            <p className="text-lg text-gray-500 text-center leading-relaxed font-medium">
+                                風險之所以可怕，<br />是因為『您從未知道它』。
+                            </p>
+                            <div className="mt-8 text-rose-600 font-bold flex items-center bg-white px-6 py-2 rounded-full border border-rose-200 group-hover:border-rose-400 transition-colors shadow-sm">
+                                <i className="fas fa-search-plus mr-2"></i> 查看風險控制分析
+                            </div>
+                        </button>
                     </div>
                 </div>
             </section>
