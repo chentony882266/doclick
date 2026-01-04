@@ -358,12 +358,20 @@ const BusinessPage = ({ onBack }) => {
             {/* Trust Footnote */}
             <div className="bg-gray-50 py-8 border-t border-gray-200">
                 <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs">
-                    <div className="flex items-center gap-4 mb-4 md:mb-0">
-                        <span><i className="fas fa-shield-alt mr-1"></i> 100% 合規申報</span>
-                        <span><i className="fas fa-file-invoice-dollar mr-1"></i> 實開統一發票</span>
+                    <div className="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0">
+                        <span className="font-bold text-gray-700">聯繫愜易居</span>
+                        <span className="hidden md:inline text-gray-300">|</span>
+                        <span>點籽響有限公司</span>
+                        <span className="hidden md:inline text-gray-300">|</span>
+                        <span>統一編號 93366453</span>
+                        <span className="hidden md:inline text-gray-300">|</span>
+                        <span>登記地址：新北市林口區仁愛路二段502號12樓</span>
                     </div>
                     <div>
-                        &copy; 2026 Dian Zi Xiang Ltd. All rights reserved.
+                        <div className="flex items-center gap-4 text-gray-400">
+                            <span><i className="fas fa-shield-alt mr-1"></i> 100% 合規申報</span>
+                            <span><i className="fas fa-file-invoice-dollar mr-1"></i> 實開統一發票</span>
+                        </div>
                     </div>
                 </div>
             </div>
