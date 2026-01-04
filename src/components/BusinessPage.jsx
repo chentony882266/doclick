@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import InfoModal from './InfoModal';
 import PriceListModal from './PriceListModal';
+import ServiceSpecsModal from './ServiceSpecsModal';
 import { PRICING_PLANS } from '../constants/data';
 
 const BusinessPage = ({ onBack }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isPriceListModalOpen, setIsPriceListModalOpen] = useState(false);
+    const [isServiceSpecsModalOpen, setIsServiceSpecsModalOpen] = useState(false);
 
     return (
         <div className="bg-white min-h-screen font-sans relative">
             <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             <PriceListModal isOpen={isPriceListModalOpen} onClose={() => setIsPriceListModalOpen(false)} />
+            <ServiceSpecsModal isOpen={isServiceSpecsModalOpen} onClose={() => setIsServiceSpecsModalOpen(false)} />
 
             {/* Biz Nav */}
             <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
@@ -249,49 +252,59 @@ const BusinessPage = ({ onBack }) => {
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* Admin */}
-                        <div className="flex flex-col h-full">
+                        <div className="flex flex-col h-full bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300">
                             <div className="text-teal-600 mb-6 text-6xl"><i className="fas fa-folder"></i></div>
                             <h3 className="text-xl font-bold mb-2 text-gray-900">行政與財務</h3>
-                            <h4 className="text-sm font-bold text-gray-500 mb-4">(Admin & Finance)</h4>
-                            <p className="text-gray-600 text-sm mb-6 flex-grow">
-                                會計助理、行政總務、客服...
+                            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Admin & Finance</h4>
+                            <p className="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">
+                                會計助理、行政總務、客服、資料建檔...
                             </p>
-                            <p className="text-teal-600 text-sm italic font-medium mt-auto">
+                            <p className="text-teal-600 text-sm italic font-medium mt-auto bg-teal-50 p-4 rounded-lg">
                                 “別讓固定的薪資成本吃掉您的創業跑道。您只需為『執行』付費。”
                             </p>
                         </div>
                         {/* E-commerce */}
-                        <div className="flex flex-col h-full">
+                        <div className="flex flex-col h-full bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300">
                             <div className="text-teal-600 mb-6 text-6xl"><i className="fas fa-box-open"></i></div>
                             <h3 className="text-xl font-bold mb-2 text-gray-900">電商與物流</h3>
-                            <h4 className="text-sm font-bold text-gray-500 mb-4">(E-commerce & Logistics)</h4>
-                            <p className="text-gray-600 text-sm mb-6 flex-grow">
+                            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">E-commerce & Logistics</h4>
+                            <p className="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">
                                 理貨包裝、倉儲管理、堆高機操作員...
                             </p>
-                            <p className="text-teal-600 text-sm italic font-medium mt-auto">
+                            <p className="text-teal-600 text-sm italic font-medium mt-auto bg-teal-50 p-4 rounded-lg">
                                 “雙11爆單是開心的事，別讓『出貨太慢』變成負評的開始。”
                             </p>
                         </div>
                         {/* Design */}
-                        <div className="flex flex-col h-full">
+                        <div className="flex flex-col h-full bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-shadow duration-300">
                             <div className="text-teal-600 mb-6 text-6xl"><i className="fas fa-palette"></i></div>
                             <h3 className="text-xl font-bold mb-2 text-gray-900">設計與行銷</h3>
-                            <h4 className="text-sm font-bold text-gray-500 mb-4">(Design & Marketing)</h4>
-                            <p className="text-gray-600 text-sm mb-6 flex-grow">
-                                平面美編、社群小編、短影音...
+                            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Design & Marketing</h4>
+                            <p className="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">
+                                平面美編、社群小編、短影音製作...
                             </p>
-                            <p className="text-teal-600 text-sm italic font-medium mt-auto">
+                            <p className="text-teal-600 text-sm italic font-medium mt-auto bg-teal-50 p-4 rounded-lg">
                                 “流量很貴，別讓糟糕的圖片浪費廣告費。我們的美編懂『賣貨邏輯』。”
                             </p>
                         </div>
-                        {/* More */}
-                        <div className="flex flex-col h-full">
-                            <div className="text-teal-600 mb-6 text-6xl"><i className="fas fa-plus"></i></div>
-                            <h3 className="text-xl font-bold mb-2 text-gray-900">更多專業職能</h3>
-                            <h4 className="text-sm font-bold text-gray-500 mb-4">(And more...)</h4>
-                            <p className="text-gray-600 text-sm mb-6 flex-grow">
-                                我們能為你客製化各種人力模組，從工程製圖到業務助理。
-                            </p>
+                        {/* More Button */}
+                        <div className="flex flex-col h-full items-center justify-center p-8">
+                            <button
+                                onClick={() => setIsServiceSpecsModalOpen(true)}
+                                className="group w-full h-full min-h-[300px] border-2 border-dashed border-gray-300 rounded-2xl flex flex-col items-center justify-center hover:border-biz-500 hover:bg-biz-50 transition-all duration-300 p-8 text-center"
+                            >
+                                <div className="w-20 h-20 bg-gray-100 group-hover:bg-white rounded-full flex items-center justify-center mb-6 transition-colors shadow-sm">
+                                    <i className="fas fa-plus text-3xl text-gray-400 group-hover:text-biz-600"></i>
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-700 group-hover:text-biz-800 mb-2">更多專業職能</h3>
+                                <p className="text-gray-500 text-sm mb-6 group-hover:text-gray-600">(And more...)</p>
+                                <span className="text-biz-600 font-bold border-b border-biz-600 pb-1 group-hover:text-biz-800 group-hover:border-biz-800">
+                                    依照您的需求客製化人力模組
+                                </span>
+                                <div className="mt-6 bg-biz-600 text-white py-2 px-6 rounded-lg text-sm font-bold shadow-md transform group-hover:-translate-y-1 transition-transform">
+                                    瞭解更多愜易居的職能規範
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>
