@@ -113,7 +113,7 @@ const SERVICE_SPECS = [
     },
     {
         id: 'design',
-        title: '美術設計編輯',
+        title: '美術設計編輯 (技術型)',
         icon: 'fa-paint-brush',
         color: 'text-pink-600',
         bg: 'bg-pink-50',
@@ -130,7 +130,7 @@ const SERVICE_SPECS = [
     },
     {
         id: 'web_design',
-        title: '銷售網站美編',
+        title: '銷售網站美編 (技術型)',
         icon: 'fa-laptop-code',
         color: 'text-purple-600',
         bg: 'bg-purple-50',
