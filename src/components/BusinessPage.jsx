@@ -168,36 +168,130 @@ const BusinessPage = ({ onBack }) => {
             </section>
 
             {/* Solutions */}
-            <section id="solutions" className="py-20">
+            {/* Concept Transformation - Hub & Spoke */}
+            <section className="py-20 bg-white">
                 <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900">全方位產能解決方案</h2>
-                        <p className="text-gray-600 mt-4">不僅是基礎人力，更是您的專業後勤</p>
+                    <div className="max-w-6xl mx-auto">
+                        <div className="mb-16">
+                            <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-snug">
+                                愜易居：將「固定人事成本」<br />轉化為「彈性營運產能」
+                            </h2>
+                            <p className="text-xl text-gray-500">
+                                忘掉聘請「一個人」，開始思考獲取「能力的時數」。
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+                            {/* Left Text */}
+                            <div className="lg:w-1/2 space-y-8">
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0 mt-1">
+                                        <i className="fas fa-check-circle text-biz-500 text-2xl"></i>
+                                    </div>
+                                    <div className="ml-4">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-1">隨需應變 (On-Demand)</h3>
+                                        <p className="text-gray-600">只在需要時，為需要的技能付費。將固定開銷轉為變動成本。</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0 mt-1">
+                                        <i className="fas fa-check-circle text-biz-500 text-2xl"></i>
+                                    </div>
+                                    <div className="ml-4">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-1">風險外包 (Risk Outsourced)</h3>
+                                        <p className="text-gray-600">我們處理勞健保、勞退與所有勞資問題。您完全避免勞資糾紛與高額罰款的風險。</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0 mt-1">
+                                        <i className="fas fa-check-circle text-biz-500 text-2xl"></i>
+                                    </div>
+                                    <div className="ml-4">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-1">職能多元 (Diverse Skills)</h3>
+                                        <p className="text-gray-600">一筆預算，解鎖整個團隊的能力。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Visual - Abstract Diagram */}
+                            <div className="lg:w-1/2 flex items-center justify-center relative">
+                                <div className="relative z-10 w-48 h-48 bg-white rounded-full shadow-[0_0_40px_rgba(14,165,233,0.15)] flex flex-col items-center justify-center border-4 border-biz-100">
+                                    <div className="text-3xl font-bold text-biz-600 tracking-widest text-center leading-tight">愜<br />易居</div>
+                                </div>
+                                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 space-y-6">
+                                    {/* Connecting Lines would be complex in pure CSS, using simple cards for now */}
+                                </div>
+                                <div className="flex flex-col gap-6 ml-8">
+                                    <div className="bg-white border border-gray-100 shadow-md p-4 rounded-xl flex items-center w-48 transform translate-x-4">
+                                        <div className="text-gray-400 text-2xl mr-4"><i className="fas fa-folder-open"></i></div>
+                                        <span className="font-bold text-gray-700">行政</span>
+                                    </div>
+                                    <div className="bg-white border border-gray-100 shadow-md p-4 rounded-xl flex items-center w-48">
+                                        <div className="text-gray-400 text-2xl mr-4"><i className="fas fa-palette"></i></div>
+                                        <span className="font-bold text-gray-700">設計</span>
+                                    </div>
+                                    <div className="bg-white border border-gray-100 shadow-md p-4 rounded-xl flex items-center w-48 transform translate-x-4">
+                                        <div className="text-gray-400 text-2xl mr-4"><i className="fas fa-box"></i></div>
+                                        <span className="font-bold text-gray-700">物流</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="group p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all hover:border-biz-500">
-                            <div className="text-biz-600 mb-4 text-3xl"><i className="fas fa-box-open"></i></div>
-                            <h3 className="text-xl font-bold mb-3">彈性時數包</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                針對行政、包裝、理貨等標準化作業。透過點數系統，一鍵調度，解決訂單爆量時的人力缺口。
+                </div>
+            </section>
+
+            {/* Service Teams - What team do you need today? */}
+            <section id="solutions" className="py-24 bg-gray-50">
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-20">
+                        <h2 className="text-4xl font-bold text-gray-900">今天，你需要什麼樣的團隊？</h2>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {/* Admin */}
+                        <div className="flex flex-col h-full">
+                            <div className="text-teal-600 mb-6 text-6xl"><i className="fas fa-folder"></i></div>
+                            <h3 className="text-xl font-bold mb-2 text-gray-900">行政與財務</h3>
+                            <h4 className="text-sm font-bold text-gray-500 mb-4">(Admin & Finance)</h4>
+                            <p className="text-gray-600 text-sm mb-6 flex-grow">
+                                會計助理、行政總務、客服...
                             </p>
-                            <span className="text-xs bg-biz-50 text-biz-700 px-2 py-1 rounded">1.0 點/hr</span>
+                            <p className="text-teal-600 text-sm italic font-medium mt-auto">
+                                “別讓固定的薪資成本吃掉您的創業跑道。您只需為『執行』付費。”
+                            </p>
                         </div>
-                        <div className="group p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all hover:border-biz-500">
-                            <div className="text-biz-600 mb-4 text-3xl"><i className="fas fa-laptop-code"></i></div>
-                            <h3 className="text-xl font-bold mb-3">技術人才訂閱</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                設計雲 (Design Cloud) 與專業管家 (Fractional Pro)。讓您擁有美編吃到飽或每週駐點的資深財務/人資。
+                        {/* E-commerce */}
+                        <div className="flex flex-col h-full">
+                            <div className="text-teal-600 mb-6 text-6xl"><i className="fas fa-box-open"></i></div>
+                            <h3 className="text-xl font-bold mb-2 text-gray-900">電商與物流</h3>
+                            <h4 className="text-sm font-bold text-gray-500 mb-4">(E-commerce & Logistics)</h4>
+                            <p className="text-gray-600 text-sm mb-6 flex-grow">
+                                理貨包裝、倉儲管理、堆高機操作員...
                             </p>
-                            <span className="text-xs bg-biz-50 text-biz-700 px-2 py-1 rounded">專案扣點制</span>
+                            <p className="text-teal-600 text-sm italic font-medium mt-auto">
+                                “雙11爆單是開心的事，別讓『出貨太慢』變成負評的開始。”
+                            </p>
                         </div>
-                        <div className="group p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all hover:border-biz-500">
-                            <div className="text-biz-600 mb-4 text-3xl"><i className="fas fa-utensils"></i></div>
-                            <h3 className="text-xl font-bold mb-3">餐飲快閃支援</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                                尖峰時刻的「雲端洗碗機」與外場支援。採用班次券制度，一口價含稅含加班費，成本完全可控。
+                        {/* Design */}
+                        <div className="flex flex-col h-full">
+                            <div className="text-teal-600 mb-6 text-6xl"><i className="fas fa-palette"></i></div>
+                            <h3 className="text-xl font-bold mb-2 text-gray-900">設計與行銷</h3>
+                            <h4 className="text-sm font-bold text-gray-500 mb-4">(Design & Marketing)</h4>
+                            <p className="text-gray-600 text-sm mb-6 flex-grow">
+                                平面美編、社群小編、短影音...
                             </p>
-                            <span className="text-xs bg-biz-50 text-biz-700 px-2 py-1 rounded">票券制</span>
+                            <p className="text-teal-600 text-sm italic font-medium mt-auto">
+                                “流量很貴，別讓糟糕的圖片浪費廣告費。我們的美編懂『賣貨邏輯』。”
+                            </p>
+                        </div>
+                        {/* More */}
+                        <div className="flex flex-col h-full">
+                            <div className="text-teal-600 mb-6 text-6xl"><i className="fas fa-plus"></i></div>
+                            <h3 className="text-xl font-bold mb-2 text-gray-900">更多專業職能</h3>
+                            <h4 className="text-sm font-bold text-gray-500 mb-4">(And more...)</h4>
+                            <p className="text-gray-600 text-sm mb-6 flex-grow">
+                                我們能為你客製化各種人力模組，從工程製圖到業務助理。
+                            </p>
                         </div>
                     </div>
                 </div>
