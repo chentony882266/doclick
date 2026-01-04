@@ -30,13 +30,15 @@ const CostComparisonModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Footer */}
-                <div className="p-4 border-t border-gray-100 bg-white flex justify-center sticky bottom-0 z-10">
-                    <button
-                        onClick={onClose}
-                        className="bg-biz-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-biz-700 transition-colors shadow-lg"
-                    >
-                        了解更多細節
-                    </button>
+                <div className="p-6 border-t border-gray-100 bg-white flex flex-col items-center sticky bottom-0 z-10">
+                    <p className="text-gray-500 text-sm mb-3 font-medium">掃描加入 Line 諮詢，獲取完整報價</p>
+                    <div className="w-32 h-32 bg-gray-50 p-2 rounded-xl shadow-inner">
+                        <img
+                            src="/images/action_qr.png"
+                            alt="加入 Line 諮詢"
+                            className="w-full h-full object-contain mix-blend-multiply"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
