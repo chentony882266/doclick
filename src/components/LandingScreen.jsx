@@ -37,9 +37,9 @@ const LandingScreen = ({ onSelect }) => {
 
             {/* Logo Overlay */}
             <div className="absolute top-6 left-6 z-50 pointer-events-none">
-                <div className="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-sm flex items-center">
-                    <span className="font-bold text-gray-900 text-lg tracking-wider">愜意居</span>
-                    <span className="text-gray-500 text-xs ml-2">- 營運模組規劃 x 靈活就業平臺</span>
+                <div className="bg-white/90 backdrop-blur px-6 py-3 rounded-lg shadow-md flex items-baseline">
+                    <span className="font-bold text-gray-900 text-3xl tracking-wider">愜易居</span>
+                    <span className="text-gray-600 text-lg ml-3 font-medium">- 營運模組規劃 x 靈活就業平臺</span>
                 </div>
             </div>
         </div>

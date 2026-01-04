@@ -9,7 +9,7 @@ const TalentPage = ({ onBack }) => {
             <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                     <div className="flex items-center cursor-pointer" onClick={onBack}>
-                        <div className="font-bold text-xl tracking-wider mr-2 text-talent-900">愜意居</div>
+                        <div className="font-bold text-xl tracking-wider mr-2 text-talent-900">愜易居</div>
                         <div className="text-xs bg-talent-100 text-talent-800 px-2 py-1 rounded">Career</div>
                     </div>
                     <div className="hidden md:flex space-x-8 text-sm text-gray-600 items-center">
@@ -129,7 +129,7 @@ const TalentPage = ({ onBack }) => {
                         <div className="md:w-1/3">
                             <h2 className="text-3xl font-bold mb-6">不只是打工<br />是你的生涯加速器</h2>
                             <p className="text-talent-200 mb-8 leading-relaxed">
-                                我們知道你有夢想，可能想當設計師、想開咖啡廳、或正在準備國考。愜意居提供的不只是薪水，而是支持你追夢的資源。
+                                我們知道你有夢想，可能想當設計師、想開咖啡廳、或正在準備國考。愜易居提供的不只是薪水，而是支持你追夢的資源。
                             </p>
                             <button className="text-white border border-white px-6 py-2 rounded-lg hover:bg-white hover:text-talent-900 transition-colors">
                                 查看完整福利手冊

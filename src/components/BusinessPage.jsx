@@ -13,7 +13,7 @@ const BusinessPage = ({ onBack }) => {
             <nav className="sticky top-0 z-50 bg-biz-900 text-white shadow-md">
                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                     <div className="flex items-center cursor-pointer" onClick={onBack}>
-                        <div className="font-bold text-xl tracking-wider mr-2">愜意居</div>
+                        <div className="font-bold text-xl tracking-wider mr-2">愜易居</div>
                         <div className="text-xs bg-biz-700 px-2 py-1 rounded">Enterprise</div>
                     </div>
                     <div className="hidden md:flex space-x-8 text-sm">
@@ -50,7 +50,7 @@ const BusinessPage = ({ onBack }) => {
                         </h1>
                         <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg">
                             台灣中小企業的第二個人資部。<br />
-                            零風險・全彈性・訂閱制。讓您專注核心業務，繁瑣的勞務交給愜意居。
+                            零風險・全彈性・訂閱制。讓您專注核心業務，繁瑣的勞務交給愜易居。
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <button className="bg-biz-500 hover:bg-biz-400 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-biz-500/30 transition-all transform hover:-translate-y-1">
@@ -96,7 +96,7 @@ const BusinessPage = ({ onBack }) => {
                                 <div className="w-16 h-16 bg-biz-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <i className="fas fa-robot text-biz-600 text-2xl"></i>
                                 </div>
-                                <h3 className="text-xl font-bold text-biz-900">愜意居 訂閱制</h3>
+                                <h3 className="text-xl font-bold text-biz-900">愜易居 訂閱制</h3>
                             </div>
                             <ul className="space-y-4 text-gray-700 text-sm font-medium">
                                 <li className="flex items-start"><i className="fas fa-check text-green-500 mt-1 mr-3"></i> 費用全包（含勞健保、退休金）</li>
@@ -114,7 +114,7 @@ const BusinessPage = ({ onBack }) => {
                             className="inline-flex items-center text-biz-600 font-bold hover:text-biz-800 transition-colors border-b-2 border-biz-200 hover:border-biz-600 pb-1"
                         >
                             <i className="fas fa-info-circle mr-2"></i>
-                            深入了解愜意居的獨特價值
+                            深入了解愜易居的獨特價值
                         </button>
                     </div>
                 </div>

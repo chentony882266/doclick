@@ -11,7 +11,7 @@ const InfoModal = ({ isOpen, onClose }) => {
                 {/* Left Side: Visual/Brand */}
                 <div className="md:w-1/3 bg-biz-900 text-white p-8 flex flex-col justify-between">
                     <div>
-                        <h3 className="text-2xl font-bold mb-2">愜意居價值主張</h3>
+                        <h3 className="text-2xl font-bold mb-2">愜易居價值主張</h3>
                         <div className="h-1 w-10 bg-biz-500 mb-6"></div>
                         <p className="text-biz-200 text-sm leading-relaxed">
                             我們致力於重新定義企業與人才的關係，透過數據與科技，創造雙贏的勞動力生態。
@@ -38,9 +38,9 @@ const InfoModal = ({ isOpen, onClose }) => {
                                 <i className="fas fa-hands-helping text-xl"></i>
                             </div>
                             <div>
-                                <h4 className="font-bold text-gray-900 text-lg mb-2">1. 愜意居如何幫助中小企業主？</h4>
+                                <h4 className="font-bold text-gray-900 text-lg mb-2">1. 愜易居如何幫助中小企業主？</h4>
                                 <p className="text-gray-600 text-sm leading-relaxed">
-                                    我們充當您的「第二個人資部」。從繁瑣的招募篩選、教育訓練到薪資結算、勞健保申報，愜意居一站式全包。讓您擺脫行政泥沼，專注於核心業務發展與營收成長。
+                                    我們充當您的「第二個人資部」。從繁瑣的招募篩選、教育訓練到薪資結算、勞健保申報，愜易居一站式全包。讓您擺脫行政泥沼，專注於核心業務發展與營收成長。
                                 </p>
                             </div>
                         </div>
@@ -62,9 +62,9 @@ const InfoModal = ({ isOpen, onClose }) => {
                                 <i className="fas fa-rocket text-xl"></i>
                             </div>
                             <div>
-                                <h4 className="font-bold text-gray-900 text-lg mb-2">3. 為什麼企業主需要愜意居？</h4>
+                                <h4 className="font-bold text-gray-900 text-lg mb-2">3. 為什麼企業主需要愜易居？</h4>
                                 <p className="text-gray-600 text-sm leading-relaxed">
-                                    在缺工與少子化時代，擁有「彈性算力」是企業生存的關鍵。透過愜意居，您可以將固定的人事成本轉化為變動的算力成本，隨訂隨用，將經營風險降至最低，保持企業最高的靈活度。
+                                    在缺工與少子化時代，擁有「彈性算力」是企業生存的關鍵。透過愜易居，您可以將固定的人事成本轉化為變動的算力成本，隨訂隨用，將經營風險降至最低，保持企業最高的靈活度。
                                 </p>
                             </div>
                         </div>
