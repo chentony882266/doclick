@@ -341,16 +341,18 @@ const BusinessPage = ({ onBack }) => {
                         {/* How We Save You Money Card */}
                         <button
                             onClick={() => setIsCostComparisonModalOpen(true)}
-                            className="bg-biz-800 p-8 rounded-xl border border-biz-700 flex-1 opacity-75 hover:opacity-100 transition-all hover:scale-[1.02] cursor-pointer flex flex-col items-center justify-center group text-left w-full md:w-auto"
+                            className="bg-sky-50 p-8 rounded-xl border border-sky-100 flex-1 hover:shadow-2xl transition-all hover:scale-[1.02] cursor-pointer flex flex-col items-center justify-center group text-left w-full md:w-auto relative overflow-hidden"
                         >
-                            <div className="w-16 h-16 bg-biz-700 rounded-full flex items-center justify-center mb-6 group-hover:bg-biz-600 transition-colors">
-                                <i className="fas fa-hand-holding-usd text-3xl text-biz-200 group-hover:text-white"></i>
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-sky-200 to-transparent -mr-10 -mt-10 rounded-full opacity-50"></div>
+
+                            <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-sky-200 transition-colors">
+                                <i className="fas fa-hand-holding-usd text-3xl text-sky-600"></i>
                             </div>
-                            <h3 className="text-2xl font-bold mb-4 text-center group-hover:text-biz-200">愜易居如何幫企業戶省錢</h3>
-                            <p className="text-lg text-gray-400 text-center leading-relaxed group-hover:text-gray-200 font-medium">
+                            <h3 className="text-2xl font-bold mb-4 text-center text-gray-800">愜易居如何幫企業戶省錢</h3>
+                            <p className="text-lg text-gray-500 text-center leading-relaxed font-medium">
                                 把固定人事成本，<br />變成可控的營運資源。
                             </p>
-                            <div className="mt-8 text-biz-400 font-bold group-hover:text-white flex items-center bg-biz-900/50 px-6 py-2 rounded-full border border-biz-700 group-hover:border-biz-500 transition-colors">
+                            <div className="mt-8 text-sky-600 font-bold flex items-center bg-white px-6 py-2 rounded-full border border-sky-200 group-hover:border-sky-400 transition-colors shadow-sm">
                                 <i className="fas fa-chart-pie mr-2"></i> 查看成本效益分析
                             </div>
                         </button>
