@@ -328,16 +328,24 @@ const BusinessPage = ({ onBack }) => {
                     </div>
                     <div className="flex flex-col md:flex-row justify-center gap-8 max-w-5xl mx-auto">
                         {/* Non-Member */}
-                        <div className="bg-biz-800 p-8 rounded-xl border border-biz-700 flex-1 opacity-75">
-                            <h3 className="text-xl font-bold mb-2">零售散客</h3>
-                            <div className="text-3xl font-bold mb-4">$360 <span className="text-sm font-normal text-gray-400">/ 點</span></div>
-                            <p className="text-sm text-gray-400 mb-6">適合臨時性、一次性的極短期需求。</p>
-                            <ul className="text-sm space-y-3 mb-8 text-gray-300">
-                                <li><i className="fas fa-check mr-2"></i> 無月費</li>
-                                <li><i className="fas fa-times mr-2"></i> 無優先權</li>
-                                <li><i className="fas fa-times mr-2"></i> 不適用技術人才</li>
-                            </ul>
-                        </div>
+                        {/* How We Save You Money Link */}
+                        <a
+                            href="https://gemini.google.com/share/97a3c340c62a"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-biz-800 p-8 rounded-xl border border-biz-700 flex-1 opacity-75 hover:opacity-100 transition-all hover:scale-[1.02] cursor-pointer flex flex-col items-center justify-center group"
+                        >
+                            <div className="w-16 h-16 bg-biz-700 rounded-full flex items-center justify-center mb-6 group-hover:bg-biz-600 transition-colors">
+                                <i className="fas fa-lightbulb text-3xl text-biz-200 group-hover:text-white"></i>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 text-center group-hover:text-biz-200">愜易居如何為您省錢</h3>
+                            <p className="text-lg text-gray-400 text-center leading-relaxed group-hover:text-gray-200">
+                                把固定人事成本，<br />變成可控的營運資源。
+                            </p>
+                            <div className="mt-8 text-biz-400 font-bold group-hover:text-white flex items-center">
+                                了解更多 <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </a>
 
                         {PRICING_PLANS.map((plan, idx) => (
                             <div key={idx} className={`bg-white text-gray-900 p-8 rounded-xl flex-1 relative ${plan.isPopular ? 'transform md:-translate-y-4 shadow-2xl border-4 border-biz-500' : ''}`}>
