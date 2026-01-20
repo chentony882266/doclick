@@ -94,6 +94,63 @@ const TalentPage = ({ onBack }) => {
                         </div>
                     </div>
                 </div>
+
+                <div className="container mx-auto px-6 mt-20">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-12">
+                            你會很適合愜易居，<br className="md:hidden" />如果你符合以下其中一項：
+                        </h2>
+
+                        <div className="grid md:grid-cols-2 gap-8 mb-16">
+                            <div className="space-y-6">
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mt-1 mr-4">
+                                        <i className="fas fa-check text-green-600 text-sm"></i>
+                                    </div>
+                                    <p className="text-gray-700 text-lg">想要<span className="font-bold text-gray-900">彈性排班</span>，但仍希望有制度與照護，而不是隨便找零工</p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mt-1 mr-4">
+                                        <i className="fas fa-check text-green-600 text-sm"></i>
+                                    </div>
+                                    <p className="text-gray-700 text-lg">想累積一套可被承認的<span className="font-bold text-gray-900">工作資歷與信用</span></p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mt-1 mr-4">
+                                        <i className="fas fa-check text-green-600 text-sm"></i>
+                                    </div>
+                                    <p className="text-gray-700 text-lg">想要<span className="font-bold text-gray-900">更穩定的工時與收入區間</span>，不想每週都在賭有沒有班</p>
+                                </div>
+                            </div>
+                            <div className="space-y-6">
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mt-1 mr-4">
+                                        <i className="fas fa-check text-green-600 text-sm"></i>
+                                    </div>
+                                    <p className="text-gray-700 text-lg">想把派遣當成<span className="font-bold text-gray-900">職涯跳板</span>，未來有機會轉正或晉升幹部</p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mt-1 mr-4">
+                                        <i className="fas fa-check text-green-600 text-sm"></i>
+                                    </div>
+                                    <p className="text-gray-700 text-lg">重視尊重、溝通與<span className="font-bold text-gray-900">職場倫理</span>，希望在規則清楚的環境工作</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-red-50 border-l-4 border-red-400 p-6 md:p-8 rounded-r-xl">
+                            <div className="flex items-start">
+                                <i className="fas fa-exclamation-triangle text-red-400 text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h3 className="text-xl font-bold text-red-800 mb-2">如果你只想 “有空就做、臨時取消也沒差”</h3>
+                                    <p className="text-red-700 leading-relaxed">
+                                        愜易居可能不適合你。我們重視<span className="font-bold">信用與專業</span>，因為這會決定你能不能接到好案場、拿到更穩定的派班與福利。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             {/* Benefits Grid */}
