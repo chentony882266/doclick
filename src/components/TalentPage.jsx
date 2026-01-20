@@ -78,46 +78,20 @@ const TalentPage = ({ onBack }) => {
             {/* Levels */}
             <section id="levels" className="py-20 bg-white">
                 <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900">分級錄用．遊戲化晉升</h2>
-                        <p className="text-gray-500 mt-4">你的每一小時付出，都在累積未來的籌碼</p>
-                    </div>
+                    <div className="max-w-4xl mx-auto text-center">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-10">愜易居是什麼環境</h2>
+                        <div className="bg-talent-50/80 rounded-3xl p-8 md:p-14 shadow-sm border border-talent-100 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 bg-talent-200 rounded-full opacity-20 blur-2xl"></div>
+                            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-32 h-32 bg-blue-200 rounded-full opacity-20 blur-2xl"></div>
 
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        {TALENT_LEVELS.map((level, idx) => (
-                            <div key={idx} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:border-talent-300 transition-all group">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div>
-                                        <h3 className="text-talent-600 font-bold text-sm tracking-wide uppercase mb-1">{level.level}</h3>
-                                        <h4 className="text-2xl font-bold text-gray-900">{level.title}</h4>
-                                    </div>
-                                    <div className="bg-talent-50 text-talent-800 font-bold px-3 py-1 rounded text-sm">
-                                        {level.pay}
-                                    </div>
-                                </div>
-                                <div className="mb-6 text-sm text-gray-500 bg-gray-50 p-3 rounded-lg inline-block">
-                                    <i className="fas fa-exclamation-circle mr-2"></i> {level.req}
-                                </div>
-                                <ul className="space-y-3">
-                                    {level.benefits.map((b, i) => (
-                                        <li key={i} className="flex items-center text-gray-700">
-                                            <i className="fas fa-star text-yellow-400 mr-3"></i> {b}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="mt-8 pt-6 border-t border-gray-100 text-center">
-                                    <span className="text-xs text-gray-400">
-                                        {idx === 0 ? "由此開始你的旅程" : "解鎖更多高階權限"}
-                                    </span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="text-center mt-8">
-                        <p className="text-xs text-red-500 bg-red-50 inline-block px-4 py-2 rounded-full">
-                            <i className="fas fa-ban mr-2"></i> 錄用紅線：月可排班小於 35 小時者，恕不錄用
-                        </p>
+                            <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-bold mb-8">
+                                在愜易居，不只是接班賺錢，<br className="hidden md:block" />
+                                而是把每一小時都變成你的<span className="text-talent-600">職涯資產</span>。
+                            </p>
+                            <p className="text-lg text-gray-600 leading-loose text-justify md:text-center">
+                                你可以彈性排班，也可以選擇走向更穩定的工時與升遷路徑。愜易居不是把你丟到案場就不管，我們有制度、有主管、有照護，讓你在不同工作場域依然能被<span className="text-gray-800 font-bold border-b-2 border-talent-300">保護</span>、被<span className="text-gray-800 font-bold border-b-2 border-talent-300">培養</span>、被<span className="text-gray-800 font-bold border-b-2 border-talent-300">看見</span>。
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
