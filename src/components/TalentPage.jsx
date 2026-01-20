@@ -17,6 +17,7 @@ const TalentPage = ({ onBack }) => {
                         <a href="#vision" className="hover:text-talent-600">願景</a>
                         <a href="#levels" className="hover:text-talent-600">分級制度</a>
                         <a href="#benefits" className="hover:text-talent-600">地圖卡福利</a>
+                        <a href="#faq" className="hover:text-talent-600">常見問題</a>
                     </div>
                     <Link to="/register" className="bg-talent-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-talent-700 shadow-md shadow-talent-500/30">
                         立即加入
@@ -187,6 +188,58 @@ const TalentPage = ({ onBack }) => {
                                 <h3 className="font-bold text-lg mb-2">100% 法規保障</h3>
                                 <p className="text-sm text-gray-300">我們最基本的堅持。勞保、健保、勞退6% 絕對足額提撥，不玩文字遊戲。</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section id="faq" className="py-20 bg-gray-50">
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl font-bold text-gray-900">常見問題</h2>
+                        <p className="text-gray-500 mt-4">你可能會想知道的事</p>
+                    </div>
+                    <div className="max-w-3xl mx-auto space-y-8">
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q1：我一定要每天上班嗎？</h3>
+                            <p className="text-gray-600">不一定。你可以彈性排班；如果你希望收入更穩，我們也有更穩定的派班節奏與方案。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q2：薪資怎麼算？何時發薪？</h3>
+                            <p className="text-gray-600">依工作時數與加成規則計算，固定發薪日（可在入職說明中清楚告知）。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q3：有勞健保嗎？</h3>
+                            <p className="text-gray-600">有！依照勞基法給予基本該有的保障（入職時會說明適用條件與方式）。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q4：遇到案場不尊重或不合理要求怎麼辦？</h3>
+                            <p className="text-gray-600">你有保母與直屬窗口可即時回報，公司會介入處理。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q5：我沒有經驗可以做嗎？</h3>
+                            <p className="text-gray-600">可以。部分職能有新人訓練與上工支持。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q6：什麼是地圖卡等級？</h3>
+                            <p className="text-gray-600">你在愜易居的工時會終身累積，達到門檻就升級並解鎖福利與機會。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q7：我能從派遣變成正職嗎？</h3>
+                            <p className="text-gray-600">可以。我們提供清楚的累積與轉正路徑，讓你用表現爭取轉正，而不是只靠一次面試。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q8：會不會很不穩定、沒班上？</h3>
+                            <p className="text-gray-600">我們會依你的參與程度與履約狀況提供不同派班優先權；越穩定的人越能拿到穩定的派班。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q9：我可以介紹朋友加入嗎？</h3>
+                            <p className="text-gray-600">可以，並有對應的介紹獎勵與制度。</p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Q10：我要怎麼開始？</h3>
+                            <p className="text-gray-600">點擊「立即加入」，填寫資料後我們會聯繫你安排下一步。</p>
                         </div>
                     </div>
                 </div>
