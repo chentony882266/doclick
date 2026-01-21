@@ -24,6 +24,13 @@ const LandingScreen = ({ onSelect }) => {
                 className="relative w-full md:w-1/2 h-1/2 md:h-full bg-talent-50 text-gray-800 flex flex-col justify-center items-center p-10 cursor-pointer transition-all duration-500 ease-in-out md:hover:w-[55%] group border-t md:border-t-0 md:border-l border-gray-200"
                 onClick={() => onSelect('talent')}
             >
+                {/* Talent Side Badge */}
+                <div className="absolute top-6 left-6 z-50 pointer-events-none text-left">
+                    <div className="bg-white/90 backdrop-blur px-6 py-3 rounded-lg shadow-md flex items-baseline">
+                        <span className="font-bold text-gray-900 text-3xl tracking-wider">愜易居</span>
+                        <span className="text-gray-600 text-lg ml-3 font-medium">- 靈活就業平臺 x 人才養育培訓</span>
+                    </div>
+                </div>
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1600')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity"></div>
                 <div className="z-10 text-center">
                     <div className="inline-block px-3 py-1 bg-talent-100 text-talent-800 text-xs tracking-widest mb-4 rounded-full uppercase">For Talent</div>
