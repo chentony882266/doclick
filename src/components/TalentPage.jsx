@@ -10,7 +10,7 @@ const TalentPage = ({ onBack }) => {
                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                     <div className="flex items-center cursor-pointer" onClick={onBack}>
                         <div className="font-bold text-xl tracking-wider mr-2 text-talent-900">愜易居</div>
-                        <div className="text-xs bg-talent-100 text-talent-800 px-2 py-1 rounded">Career</div>
+                        <div className="text-xs bg-talent-100 text-talent-800 px-2 py-1 rounded">靈活就業平臺 x 人才養育培訓</div>
                     </div>
                     <div className="hidden md:flex space-x-8 text-sm text-gray-600 items-center">
                         <Link to="/jobs" className="hover:text-talent-600 font-bold">找工作</Link>
